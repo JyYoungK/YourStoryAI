@@ -6,10 +6,6 @@ form {
   text-align: left;
 }
 
-input.form-input {
-  width: calc(100% - 32px);
-}
-
-select.form-input {
-  width: calc(100% - 32px);
-}
+/* select.form-input {
+  width: calc(100%);
+} */
