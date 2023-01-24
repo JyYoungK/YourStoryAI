@@ -3,16 +3,15 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import Loading from "./Loading";
 
-const StoryGeneration = ({ StoryData, setStoryData, Title }) => {
+const StoryGeneration = ({ StoryData, Title }) => {
   useEffect(() => {
     if (StoryData) {
-      setStoryData(StoryData);
+      console.log(StoryData);
+      setSentences(StoryData.replace(/\n/g, "").split(". "));
     }
   }, [StoryData]);
 
-  const [sentences, setSentences] = useState(
-    StoryData.replaceAll("\n", "").split(". ")
-  );
+  const [sentences, setSentences] = useState(null);
 
   const handleSentenceChange = (index, event) => {
     const newSentences = [...sentences];
@@ -31,7 +30,7 @@ const StoryGeneration = ({ StoryData, setStoryData, Title }) => {
 
   async function handleRegenerate(index) {
     console.log("Regenerating...");
-    const response = await fetch("https://santaai.onrender.com", {
+    const response = await fetch("https://screenplai.onrender.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +45,7 @@ const StoryGeneration = ({ StoryData, setStoryData, Title }) => {
       const data = await response.json();
       console.log(data.bot.replaceAll("\n", ""));
       const newSentences = [...sentences];
-      newSentences[index] = data.bot.replaceAll("\n", "");
+      newSentences[index] = data.bot.replace(/\n/g, "");
       setSentences(newSentences);
     } else {
       alert("Error generating a new sentence");
@@ -55,11 +54,11 @@ const StoryGeneration = ({ StoryData, setStoryData, Title }) => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold text-center my-2">
-        Generated Story {Title && ": " + Title}
-      </h1>
       <div className="container mx-auto">
-        {StoryData ? (
+        <h1 className="text-4xl font-bold text-center my-2">
+          Generated Story {Title && ": " + Title}
+        </h1>
+        {sentences ? (
           sentences.map((sentence, index) => (
             <div className="flex flex-row" key={index}>
               <div className="my-4 w-full">

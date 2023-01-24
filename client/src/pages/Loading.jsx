@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loading = (Title) => {
+const Loading = ({ Title }) => {
   return (
     <div className="flex items-center h-screen">
       <div className="mx-auto">

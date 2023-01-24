@@ -45,15 +45,9 @@ function App() {
         />
       );
       break;
-    // case 3:
-    //   pageContent = <Loading />;
     case 3:
       pageContent = (
-        <StoryGeneration
-          StoryData={storyData}
-          setStoryData={setStoryData}
-          Title={plotData.title}
-        />
+        <StoryGeneration StoryData={storyData} Title={plotData.title} />
       );
 
       break;
@@ -63,7 +57,7 @@ function App() {
 
   async function handleSubmit() {
     console.log("Story Data has sent");
-    const response = await fetch("https://santaai.onrender.com", {
+    const response = await fetch("https://screenplai.onrender.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +72,7 @@ function App() {
       setStoryData(data.bot);
       setCurrentPage(3);
     } else {
-      alert("Error generating story");
+      alert("Error generating a story");
     }
   }
 
