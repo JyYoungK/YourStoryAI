@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Plot from "./pages/Plot";
 import Characters from "./pages/Characters";
+import StoryGeneration from "./pages/StoryGeneration";
 
 function App() {
   const [plotData, setPlotData] = useState({
@@ -48,11 +49,13 @@ function App() {
         />
       );
       break;
-    // case 3:
-    //   pageContent = <Page3 />;
-    //   break;
+    case 3:
+      pageContent = (
+        <StoryGeneration plotData={plotData} characterData={characterData} />
+      );
+      break;
     default:
-      pageContent = <Plot />;
+      pageContent = <Plot plotData={plotData} setPlotData={setPlotData} />;
   }
 
   return (
@@ -92,27 +95,31 @@ function App() {
               </div>
             )
           ) : (
-            <div>
-              <button
-                className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                Previous Page
-              </button>
-              <button
-                className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
-                onClick={() => alert("You have reached the end!")}
-              >
-                Submit
-              </button>
-            </div>
+            currentPage <= totalPages && (
+              <div>
+                <button
+                  className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  Previous Page
+                </button>
+                <button
+                  className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  Submit
+                </button>
+              </div>
+            )
           )}
         </div>
-        <div className="text-center mr-2">
-          <p className="text-gray-600">
-            Page {currentPage} of {totalPages}
-          </p>
-        </div>
+        {currentPage <= totalPages && (
+          <div className="text-center mr-2">
+            <p className="text-gray-600">
+              Page {currentPage} of {totalPages}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
