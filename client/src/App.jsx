@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import Plot from "./pages/Plot";
 import Characters from "./pages/Characters";
 import StoryGeneration from "./pages/StoryGeneration";
+import { APIcall } from "./APIcall";
 
 function App() {
   const [plotData, setPlotData] = useState({
-    title: "Bob",
-    logline: "Life Lessons",
+    title: "",
+    logline: "",
     themes: "",
     storyType: "Magic Wish",
     genre: "adventure",
@@ -57,32 +58,20 @@ function App() {
 
   async function handleSubmit() {
     console.log("Story Data has sent");
-    const response = await fetch("https://screenplai.onrender.com/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: `Can you write a story about ${plotData.logline}, it has a theme of ${plotData.themes} and the story type is ${plotData.storyType}, the genre is ${plotData.genre} and write it in a tone of ${plotData.tone} and the audience is ${plotData.audience} and the setting is ${plotData.setting} and the bacgkround story is ${plotData.bStory}. Inside the story, it has a main character name called ${characterData.name} and the character arc is ${characterData.arc} and the character description is ${characterData.description} and the character personality is ${characterData.personality} and the character archetype is ${characterData.archetype} and the character want is ${characterData.want} and the character need is ${characterData.need} and the character flaw is ${characterData.flaw} and the character ghost is ${characterData.ghost}`,
-      }),
-    });
+    let prompt = `Can you write a story about ${plotData.logline}, it has a theme of ${plotData.themes} and the story type is ${plotData.storyType}, the genre is ${plotData.genre} and write it in a tone of ${plotData.tone} and the audience is ${plotData.audience} and the setting is ${plotData.setting} and the bacgkround story is ${plotData.bStory}. Inside the story, it has a main character name called ${characterData.name} and the character arc is ${characterData.arc} and the character description is ${characterData.description} and the character personality is ${characterData.personality} and the character archetype is ${characterData.archetype} and the character want is ${characterData.want} and the character need is ${characterData.need} and the character flaw is ${characterData.flaw} and the character ghost is ${characterData.ghost}`;
 
-    if (response) {
-      const data = await response.json();
-      setStoryData(data.bot);
+    APIcall(prompt).then((data) => {
+      console.log("Story has been generated");
+      setStoryData(data);
       setCurrentPage(3);
-    } else {
-      alert("Error generating a story");
-    }
+    });
   }
 
   return (
     <div className="bg-gray-200 min-h-screen text-center">
       <div className="bg-indigo-500 text-center text-white py-4">
         <div className="w-full mx-auto flex items-center justify-center">
-          <h1 className="text-4xl font-bold text-center my-5">
-            Story Generator
-          </h1>
+          <h1 className="text-4xl font-bold text-center my-5">SCREENPLAI</h1>
         </div>
       </div>
       <div className="container mx-auto">

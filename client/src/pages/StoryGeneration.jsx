@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import { APIcall } from "../APIcall";
 import Loading from "./Loading";
 
 const StoryGeneration = ({ StoryData, Title }) => {
   useEffect(() => {
     if (StoryData) {
-      console.log(StoryData);
       setSentences(StoryData.replace(/\n/g, "").split(". "));
     }
   }, [StoryData]);
@@ -22,34 +22,18 @@ const StoryGeneration = ({ StoryData, Title }) => {
   function handleCopy(sentence) {
     console.log("Copied " + sentence);
     navigator.clipboard.writeText(sentence);
-    // setCopied(true);
-    // setTimeout(() => {
-    //   setCopied(false);
-    // }, 2000);
   }
 
   async function handleRegenerate(index) {
-    console.log("Regenerating...");
-    const response = await fetch("https://screenplai.onrender.com/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: `Can you rephrase this sentence? ${sentences[index]}`,
-      }),
+    const newSentences = [...sentences];
+    newSentences[index] = "Regenerating...";
+    setSentences(newSentences);
+    let prompt = `Can you rephrase this sentence? ${sentences[index]}`;
+    APIcall(prompt).then((data) => {
+      const updatedSentences = [...sentences];
+      updatedSentences[index] = data.replace(/\n/g, "");
+      setSentences(updatedSentences);
     });
-
-    if (response) {
-      console.log("Generated a new sentence");
-      const data = await response.json();
-      console.log(data.bot.replaceAll("\n", ""));
-      const newSentences = [...sentences];
-      newSentences[index] = data.bot.replace(/\n/g, "");
-      setSentences(newSentences);
-    } else {
-      alert("Error generating a new sentence");
-    }
   }
 
   return (
