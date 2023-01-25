@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Plot from "./pages/Plot";
 import Characters from "./pages/Characters";
 import StoryGeneration from "./pages/StoryGeneration";
+import Login from "./pages/Login";
+import DarkModeButton from "./DarkModeButton";
 import { APIcall } from "./APIcall";
 
 function App() {
@@ -68,32 +70,33 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-200 min-h-screen text-center">
-      <div className="bg-indigo-500 text-center text-white py-4">
-        <div className="w-full mx-auto flex items-center justify-center">
-          <h1 className="text-4xl font-bold text-center my-5">SCREENPLAI</h1>
-        </div>
+    <div className="bg-white dark:bg-night dark:text-white text-black min-h-screen text-center">
+      <div className="py-4 items-center flex flex-row justify-between">
+        <DarkModeButton />
+        <h1 className="text-6xl font-bold my-5">SCREENPLAI</h1>
+        <Login />
       </div>
       <div className="container mx-auto">
-        <div> {pageContent}</div>
-        <div className="text-center my-6">
-          {currentPage === 1 ? (
+        <div className=""> {pageContent}</div>
+        <div className="text-center py-6 text-white">
+          {currentPage === 1 && (
             <button
-              className="bg-indigo-500 text-white py-2 px-4 rounded-md"
+              className="bg-purple  py-2 px-4 rounded-md"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               Next Page
             </button>
-          ) : currentPage === 2 ? (
+          )}
+          {currentPage === 2 && (
             <div>
               <button
-                className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
+                className="bg-purple  py-2 px-4 mx-2 rounded-md"
                 onClick={() => setCurrentPage(currentPage - 1)}
               >
                 Previous Page
               </button>
               <button
-                className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
+                className="bg-purple  py-2 px-4 mx-2 rounded-md"
                 onClick={() => {
                   handleSubmit();
                   setCurrentPage(currentPage + 1);
@@ -102,24 +105,23 @@ function App() {
                 Submit
               </button>
             </div>
-          ) : currentPage === 3 ? (
+          )}
+          {currentPage === 3 && (
             <button
-              className="bg-indigo-500 text-white py-2 px-4 mx-2 rounded-md"
+              className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
               onClick={() => setCurrentPage(currentPage - 2)}
             >
               Previous Page
             </button>
-          ) : (
-            <div></div>
           )}
         </div>
-        {currentPage <= totalPages && (
+        {/* {currentPage <= totalPages && (
           <div className="text-center mr-2">
             <p className="text-gray-600">
               Page {currentPage} of {totalPages}
             </p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
