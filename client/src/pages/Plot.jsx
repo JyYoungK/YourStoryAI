@@ -193,6 +193,26 @@ const Plot = ({ plotData, setPlotData }) => {
     <div className="text-center mb-5">
       <h1 className="text-4xl font-bold text-center my-2">Plot Section</h1>
       <form className="p-6 rounded-lg ">
+        <div className="grid grid-cols-4">
+          {selectFields.map((field) => (
+            <div className="mb-5" key={field.name}>
+              <label className="block font-medium text-xl mt-5 mb-2">
+                {field.name}
+              </label>
+              <select
+                value={field.value}
+                onChange={field.onChange}
+                className="form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none w-4/5"
+              >
+                {field.options.map((g) => (
+                  <option key={g} value={g}>
+                    {g}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
+        </div>
         {inputFields.map((field) => (
           <div className="mb-5" key={field.name}>
             <label className="block font-medium text-xl mb-2">
@@ -204,7 +224,7 @@ const Plot = ({ plotData, setPlotData }) => {
                 value={field.value}
                 onChange={(event) => field.onChange(event)}
                 placeholder={field.placeholder}
-                className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-night bg-white border-gray-400 focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
+                className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
     overflow-x-hidden text-wrap ${
       field.name === "Logline" || field.name === "B-Story" ? "h-36" : ""
     }`}
@@ -218,26 +238,6 @@ const Plot = ({ plotData, setPlotData }) => {
             </div>
           </div>
         ))}
-        <div className="grid grid-cols-4">
-          {selectFields.map((field) => (
-            <div className="mb-5" key={field.name}>
-              <label className="block font-medium text-xl mt-5 mb-2">
-                {field.name}
-              </label>
-              <select
-                value={field.value}
-                onChange={field.onChange}
-                className="form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-night bg-white border-gray-400 focus:bg-white border-2 focus:border-indigo-500 focus:outline-none w-4/5"
-              >
-                {field.options.map((g) => (
-                  <option key={g} value={g}>
-                    {g}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-        </div>
       </form>
     </div>
   );

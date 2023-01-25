@@ -7,6 +7,7 @@ module.exports = {
       white: "#ffffff",
       purple: "#3f3cbb",
       night: "#282828",
+      darknight: "#1c1c1c",
       midnight: "#121063",
       metal: "#565584",
       tahiti: "#3ab7bf",

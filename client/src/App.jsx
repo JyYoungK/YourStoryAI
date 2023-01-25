@@ -21,10 +21,11 @@ function App() {
 
   const [characterData, setCharacterData] = useState({
     name: "Bob",
-    arc: "",
-    description: "average",
-    personality: "average",
-    archetype: "",
+    type: "Protagonist",
+    arc: "Corruption",
+    description: "",
+    personality: "Disciplined",
+    archetype: "Creator",
     want: "money, fame, power",
     need: "courage, love, friendship",
     flaw: "will",
@@ -70,7 +71,7 @@ function App() {
   }
 
   return (
-    <div className="bg-white dark:bg-night dark:text-white text-black min-h-screen text-center">
+    <div className="bg-white dark:bg-darknight dark:text-white text-black min-h-screen text-center">
       <div className="py-4 items-center flex flex-row justify-between">
         <DarkModeButton />
         <h1 className="text-6xl font-bold my-5">SCREENPLAI</h1>
