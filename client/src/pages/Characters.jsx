@@ -13,6 +13,22 @@ import {
 import { APIcall } from "../APIcall";
 
 const Characters = ({ characterData, setCharacterData }) => {
+  const [characterFields, setCharacterFields] = useState([{}]);
+
+  const addCharacterField = (event) => {
+    event.preventDefault();
+    if (characterFields.length < 3) {
+      setCharacterFields([...characterFields, {}]);
+    }
+  };
+
+  const deleteCharacterField = (index, event) => {
+    event.preventDefault();
+    if (characterFields.length > 0) {
+      setCharacterFields(characterFields.filter((_, i) => i !== index));
+    }
+  };
+
   const [nameSuggestion, setNameSuggestion] = useState(nameSuggestions[0]);
   const handleName = (event) => {
     event.preventDefault();
@@ -115,10 +131,26 @@ const Characters = ({ characterData, setCharacterData }) => {
     let prompt = `Can you write me an interesting story of a character who is a ${characterData.type} and went through ${characterData.arc} and their personality is ${characterData.personality} and is a ${characterData.archetype}`;
 
     APIcall(prompt).then((data) => {
-      console.log(data);
       setCharacterData({
         ...characterData,
         description: data.replace(/\n/g, ""),
+      });
+    });
+  };
+
+  const handleGhost = (event) => {
+    event.preventDefault();
+
+    setCharacterData({
+      ...characterData,
+      ghost: `Generating ghost...`,
+    });
+    let prompt = `Can you write me an interesting past story of a character who is a ${characterData.archetype} and why they went through ${characterData.arc}`;
+
+    APIcall(prompt).then((data) => {
+      setCharacterData({
+        ...characterData,
+        ghost: data.replace(/\n/g, ""),
       });
     });
   };
@@ -172,6 +204,7 @@ const Characters = ({ characterData, setCharacterData }) => {
           ghost: event.target.value,
         }),
       placeholder: "What parts of your character's past affect their present?",
+      onClick: handleGhost,
     },
   ];
 
@@ -214,54 +247,71 @@ const Characters = ({ characterData, setCharacterData }) => {
 
   return (
     <div className="text-center mb-5">
-      <h1 className="text-4xl font-bold text-center my-2">Plot Section</h1>
-      <form className="p-6 rounded-lg ">
-        <div className="grid grid-cols-4">
-          {selectFields.map((field) => (
+      <h1 className="text-4xl font-bold text-center my-2">Character Section</h1>
+
+      {characterFields.map((character, index) => (
+        <form className="m-4 p-6 rounded-lg border-black border-4" key={index}>
+          <h1 className="text-2xl font-bold text-center my-2">
+            Character {index + 1}
+          </h1>
+          <div className="grid grid-cols-4">
+            {selectFields.map((field) => (
+              <div className="mb-5" key={field.name}>
+                <label className="block font-medium text-xl mt-5 mb-2">
+                  {field.name}
+                </label>
+                <select
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none w-4/5"
+                >
+                  {field.options.map((g) => (
+                    <option key={g} value={g}>
+                      {g}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </div>
+          {inputFields.map((field) => (
             <div className="mb-5" key={field.name}>
-              <label className="block font-medium text-xl mt-5 mb-2">
+              <label className="block font-medium text-xl mb-2">
                 {field.name}
               </label>
-              <select
-                value={field.value}
-                onChange={field.onChange}
-                className="form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none w-4/5"
-              >
-                {field.options.map((g) => (
-                  <option key={g} value={g}>
-                    {g}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-        </div>
-        {inputFields.map((field) => (
-          <div className="mb-5" key={field.name}>
-            <label className="block font-medium text-xl mb-2">
-              {field.name}
-            </label>
-            <div className="flex flex-row">
-              <textarea
-                type="text"
-                value={field.value}
-                onChange={(event) => field.onChange(event)}
-                placeholder={field.placeholder}
-                className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
+              <div className="flex flex-row">
+                <textarea
+                  type="text"
+                  value={field.value}
+                  onChange={(event) => field.onChange(event)}
+                  placeholder={field.placeholder}
+                  className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
   overflow-x-hidden text-wrap ${
     field.name === "Description" || field.name === "Ghost" ? "h-36" : ""
   }`}
-              />
-              <button onClick={field.onClick}>
-                <TipsAndUpdatesIcon
-                  className="m-2"
-                  style={{ color: "#FFEA00", fontSize: "2rem" }}
                 />
-              </button>
+                <button onClick={field.onClick}>
+                  <TipsAndUpdatesIcon
+                    className="m-2"
+                    style={{ color: "#FFEA00", fontSize: "2rem" }}
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </form>
+          ))}
+          <button
+            className="text-red text-lg"
+            onClick={(e) => deleteCharacterField(index, e)}
+          >
+            Delete Character
+          </button>
+        </form>
+      ))}
+      {characterFields.length < 3 && (
+        <button className="text-2xl" onClick={addCharacterField}>
+          Add Character
+        </button>
+      )}
     </div>
   );
 };
