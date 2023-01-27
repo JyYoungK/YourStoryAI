@@ -40,7 +40,7 @@ const StoryGeneration = ({ StoryData, Title }) => {
     <div>
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center my-2">
-          Generated Story {Title && ": " + Title}
+          Beatsheet {Title && ": " + Title}
         </h1>
         {sentences ? (
           sentences.map((sentence, index) => (
@@ -59,11 +59,6 @@ const StoryGeneration = ({ StoryData, Title }) => {
                 title="Copy"
               >
                 <ContentCopyIcon />
-                {/* {copied && (
-                    <span className="bg-green-500 p-2 rounded-lg text-white">
-                      Copied!
-                    </span>
-                  )} */}
               </button>
               <button
                 key={"regen" + index}

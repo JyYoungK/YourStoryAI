@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Plot from "./pages/Plot";
 import Characters from "./pages/Characters";
 import StoryGeneration from "./pages/StoryGeneration";
+import Act from "./pages/Act";
+import Beatsheet from "./pages/Beatsheet";
+import ImageGeneration from "./pages/ImageGeneration";
 import Login from "./pages/Login";
 import DarkModeButton from "./DarkModeButton";
 import { APIcall } from "./APIcall";
@@ -19,22 +22,31 @@ function App() {
     setting: "",
   });
 
-  const [characterData, setCharacterData] = useState({
-    name: "Bob",
-    type: "Protagonist",
-    arc: "Corruption",
-    description: "",
-    personality: "Disciplined",
-    archetype: "Creator",
-    want: "money, fame, power",
-    need: "courage, love, friendship",
-    flaw: "will",
-    ghost: "",
+  const [characterData, setCharacterData] = useState([
+    {
+      name: "Bob",
+      type: "Protagonist",
+      arc: "Corruption",
+      description: "",
+      personality: "Disciplined",
+      archetype: "Creator",
+      want: "money, fame, power",
+      need: "courage, love, friendship",
+      flaw: "will",
+      ghost: "",
+    },
+  ]);
+
+  const [actData, setActData] = useState({
+    act1: "",
+    act2: "",
+    midpoint: "",
+    act2part2: "",
+    act3: "",
   });
 
   const [storyData, setStoryData] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 3;
 
   let pageContent;
   switch (currentPage) {
@@ -50,11 +62,19 @@ function App() {
       );
       break;
     case 3:
+      pageContent = <Act actData={actData} setActData={setActData} />;
+      break;
+    case 4:
       pageContent = (
         <StoryGeneration StoryData={storyData} Title={plotData.title} />
       );
-
       break;
+    // case 5:
+    //   pageContent = <ImageGeneration />;
+    //   break;
+    // case 6:
+    //   pageContent = <ImageGeneration />;
+    //   break;
     default:
       pageContent = <Plot plotData={plotData} setPlotData={setPlotData} />;
   }
@@ -66,7 +86,7 @@ function App() {
     APIcall(prompt).then((data) => {
       console.log("Story has been generated");
       setStoryData(data);
-      setCurrentPage(3);
+      setCurrentPage(4);
     });
   }
 
@@ -99,22 +119,62 @@ function App() {
               <button
                 className="bg-purple  py-2 px-4 mx-2 rounded-md"
                 onClick={() => {
-                  handleSubmit();
                   setCurrentPage(currentPage + 1);
                 }}
               >
-                Submit
+                Next Page
               </button>
             </div>
           )}
           {currentPage === 3 && (
-            <button
-              className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
-              onClick={() => setCurrentPage(currentPage - 2)}
-            >
-              Previous Page
-            </button>
+            <div>
+              <button
+                className="bg-purple  py-2 px-4 mx-2 rounded-md"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous Page
+              </button>
+              <button
+                className="bg-purple  py-2 px-4 mx-2 rounded-md"
+                onClick={() => {
+                  handleSubmit();
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Generate Beatsheet
+              </button>
+            </div>
           )}
+          {currentPage === 4 && (
+            <div>
+              <button
+                className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+              >
+                Previous Page
+              </button>
+              {/* <button
+                className="bg-purple  py-2 px-4 mx-2 rounded-md"
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Generate Image
+              </button> */}
+            </div>
+          )}
+          {/* {currentPage === 5 && (
+            <div>
+              <button
+                className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous Page
+              </button>
+            </div>
+          )} */}
         </div>
         {/* {currentPage <= totalPages && (
           <div className="text-center mr-2">
