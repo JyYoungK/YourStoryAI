@@ -37,43 +37,42 @@ const StoryGeneration = ({ StoryData, Title }) => {
   }
 
   return (
-    <div>
-      <div className="container mx-auto">
-        <h1 className="text-4xl font-bold text-center my-2">
-          Beatsheet {Title && ": " + Title}
-        </h1>
-        {sentences ? (
-          sentences.map((sentence, index) => (
-            <div className="flex flex-row" key={index}>
-              <div className="my-4 w-full">
-                <textarea
-                  className="w-full border p-2"
-                  value={sentence + "."}
-                  onChange={(e) => handleSentenceChange(index, e)}
-                />
-              </div>
-              <button
-                key={"copy" + index}
-                className="mx-2"
-                onClick={() => handleCopy(sentence)}
-                title="Copy"
-              >
-                <ContentCopyIcon />
-              </button>
-              <button
-                key={"regen" + index}
-                className="mx-2"
-                onClick={() => handleRegenerate(index)}
-                title="Regenerate"
-              >
-                <DesignServicesIcon />
-              </button>
+    <div className="container mx-auto">
+      <h1 className="text-4xl font-bold text-center my-2">
+        Beatsheet {Title && ": " + Title}
+      </h1>
+      {sentences ? (
+        sentences.map((sentence, index) => (
+          <div className="flex flex-row" key={index}>
+            <div className="my-4 w-full">
+              <textarea
+                className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
+overflow-x-hidden text-wrap h-36`}
+                value={sentence + "."}
+                onChange={(e) => handleSentenceChange(index, e)}
+              />
             </div>
-          ))
-        ) : (
-          <Loading Title={Title} />
-        )}
-      </div>
+            <button
+              key={"copy" + index}
+              className="mx-2"
+              onClick={() => handleCopy(sentence)}
+              title="Copy"
+            >
+              <ContentCopyIcon />
+            </button>
+            <button
+              key={"regen" + index}
+              className="mx-2"
+              onClick={() => handleRegenerate(index)}
+              title="Regenerate"
+            >
+              <DesignServicesIcon />
+            </button>
+          </div>
+        ))
+      ) : (
+        <Loading Title={Title} />
+      )}
     </div>
   );
 };
