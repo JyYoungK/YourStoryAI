@@ -39,7 +39,7 @@ const StoryGeneration = ({ StoryData, Title }) => {
   return (
     <div className="container mx-auto">
       <h1 className="text-4xl font-bold text-center my-2">
-        Beatsheet {Title && ": " + Title}
+        Beetsheet {Title && ": " + Title}
       </h1>
       {sentences ? (
         sentences.map((sentence, index) => (
