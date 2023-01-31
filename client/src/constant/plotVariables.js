@@ -1,41 +1,3 @@
-export const storyTypes = [
-  "David vs Goliath",
-  "Detective",
-  "Fish out of Water",
-  "Love or Friend Story",
-  "Magic Wish",
-  "Rite of Passage",
-  "Road Story",
-  "Trapped with a monster",
-];
-
-export const genres = [
-  "Action",
-  "Adventure",
-  "Animation",
-  "Comedy",
-  "Drama",
-  "Fantasy",
-  "Family",
-  "Horror",
-  "Romance",
-  "SciFi",
-  "Western",
-];
-
-export const tones = [
-  "Formal",
-  "Informal",
-  "Optimistic",
-  "Worried",
-  "Friendly",
-  "Curious",
-  "Assertive",
-  "Encouraging",
-];
-
-export const audiences = ["Children", "Teens", "Family", "Adults", "Seniors"];
-
 export const titleSuggestions = [
   "",
   "The Lost City",
@@ -55,4 +17,63 @@ export const titleSuggestions = [
   "The Legend of the Sword",
   "The Hunt for the Golden Crown",
   "The Rise of the Dragon",
+];
+
+export const artStyles = [
+  "3D Illustration",
+  "Abstract",
+  "Charcoal Drawing",
+  "Crayon Drawing",
+  "Digital Art",
+  "Flat Art",
+  "Ink Drawing",
+  "Minimalism",
+  "Pencil Drawing",
+  "Paint Art",
+  "Psychedelic",
+  "Realism",
+  "Surrealism",
+  "Vector",
+  "Vintage",
+];
+
+export const audiences = ["Children", "Teens", "Family", "Adults", "Seniors"];
+
+export const genres = [
+  "Action",
+  "Adventure",
+  "Comedy",
+  "Crime",
+  "Fantasy",
+  "Historical",
+  "Mystery",
+  "Mythology",
+  "Horror",
+  "Romance",
+  "SciFi",
+];
+
+export const themes = [
+  "Ancient",
+  "Apocalyptic",
+  "Contemporary",
+  "Cyberpunk",
+  "Dystopian",
+  "Futuristic",
+  "Medieval",
+  "Modern",
+  "Post-Apocalyptic",
+  "Postmodern",
+  "Prehistoric",
+  "Renaissance",
+  "Space Opera",
+  "Steampunk",
+  "Supernatural",
+  "Technological",
+  "Time Travel",
+  "Tribal",
+  "Urban",
+  "Western",
+  "Wild West",
+  "19th Century Britain",
 ];

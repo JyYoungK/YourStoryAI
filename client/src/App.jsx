@@ -1,25 +1,21 @@
 import React, { useState } from "react";
-import Plot from "./pages/Plot";
+import Beatsheet from "./pages/Beatsheet";
 import Characters from "./pages/Characters";
 import StoryGeneration from "./pages/StoryGeneration";
-import Act from "./pages/Act";
-import Beatsheet from "./pages/Beatsheet";
-import ImageGeneration from "./pages/ImageGeneration";
 import Login from "./pages/Login";
-import DarkModeButton from "./DarkModeButton";
-import { APIcall } from "./APIcall";
+import DarkModeButton from "./components/DarkModeButton";
+import { APIcall } from "./components/APIcall";
 
 function App() {
   const [plotData, setPlotData] = useState({
     title: "",
     logline: "",
-    themes: "",
-    storyType: "Magic Wish",
-    genre: "adventure",
-    tone: "",
-    audience: "children",
-    bStory: "",
-    setting: "",
+    audience: "",
+    artStyle: "",
+    genre: "",
+    theme: "",
+    plot: "",
+    plotTwist: "",
   });
 
   const [characterData, setCharacterData] = useState([
@@ -37,21 +33,13 @@ function App() {
     },
   ]);
 
-  const [actData, setActData] = useState({
-    act1: "",
-    act2: "",
-    midpoint: "",
-    act2part2: "",
-    act3: "",
-  });
-
   const [storyData, setStoryData] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   let pageContent;
   switch (currentPage) {
     case 1:
-      pageContent = <Plot plotData={plotData} setPlotData={setPlotData} />;
+      pageContent = <Beatsheet plotData={plotData} setPlotData={setPlotData} />;
       break;
     case 2:
       pageContent = (
@@ -62,7 +50,7 @@ function App() {
       );
       break;
     case 3:
-      pageContent = <Act actData={actData} setActData={setActData} />;
+      // pageContent = <Act actData={actData} setActData={setActData} />;
       break;
     case 4:
       pageContent = (
@@ -76,7 +64,7 @@ function App() {
     //   pageContent = <ImageGeneration />;
     //   break;
     default:
-      pageContent = <Plot plotData={plotData} setPlotData={setPlotData} />;
+      pageContent = <Beatsheet plotData={plotData} setPlotData={setPlotData} />;
   }
 
   async function handleSubmit() {
@@ -91,98 +79,45 @@ function App() {
   }
 
   return (
-    <div className="bg-white dark:bg-darknight dark:text-white text-black min-h-screen text-center">
-      <div className="py-4 items-center flex flex-row justify-between">
+    <div className="text-black min-h-screen bg-white text-center dark:bg-darknight dark:text-white">
+      <div className="flex flex-row items-center justify-between py-4">
         <DarkModeButton />
-        <h1 className="text-6xl font-bold my-5">SCREENPLAI</h1>
+        <h1 className="my-5 text-6xl font-bold">YourStory AI</h1>
         <Login />
       </div>
       <div className="container mx-auto">
         <div className=""> {pageContent}</div>
-        <div className="text-center py-6 text-white">
+        <div className="py-6 text-center text-white">
           {currentPage === 1 && (
             <button
-              className="bg-purple  py-2 px-4 rounded-md"
-              onClick={() => setCurrentPage(currentPage + 1)}
+              className="mx-2  rounded-md bg-purple py-2 px-4"
+              onClick={() => {
+                handleSubmit();
+                setCurrentPage(currentPage + 1);
+              }}
             >
-              Next Page
+              Generate Story !
             </button>
           )}
           {currentPage === 2 && (
             <div>
               <button
-                className="bg-purple  py-2 px-4 mx-2 rounded-md"
+                className="mx-2  rounded-md bg-purple py-2 px-4"
                 onClick={() => setCurrentPage(currentPage - 1)}
               >
                 Previous Page
               </button>
               <button
-                className="bg-purple  py-2 px-4 mx-2 rounded-md"
+                className="mx-2  rounded-md bg-purple py-2 px-4"
                 onClick={() => {
                   setCurrentPage(currentPage + 1);
                 }}
               >
-                Next Page
+                Publish !
               </button>
             </div>
           )}
-          {currentPage === 3 && (
-            <div>
-              <button
-                className="bg-purple  py-2 px-4 mx-2 rounded-md"
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                Previous Page
-              </button>
-              <button
-                className="bg-purple  py-2 px-4 mx-2 rounded-md"
-                onClick={() => {
-                  handleSubmit();
-                  setCurrentPage(currentPage + 1);
-                }}
-              >
-                Generate Beatsheet
-              </button>
-            </div>
-          )}
-          {currentPage === 4 && (
-            <div>
-              <button
-                className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
-                onClick={() => {
-                  setCurrentPage(currentPage - 1);
-                }}
-              >
-                Previous Page
-              </button>
-              {/* <button
-                className="bg-purple  py-2 px-4 mx-2 rounded-md"
-                onClick={() => {
-                  setCurrentPage(currentPage + 1);
-                }}
-              >
-                Generate Image
-              </button> */}
-            </div>
-          )}
-          {/* {currentPage === 5 && (
-            <div>
-              <button
-                className="bg-purple text-white py-2 px-4 mx-2 rounded-md"
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                Previous Page
-              </button>
-            </div>
-          )} */}
         </div>
-        {/* {currentPage <= totalPages && (
-          <div className="text-center mr-2">
-            <p className="text-gray-600">
-              Page {currentPage} of {totalPages}
-            </p>
-          </div>
-        )} */}
       </div>
     </div>
   );

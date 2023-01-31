@@ -10,7 +10,7 @@ import {
   flawSuggestions,
   needSuggestions,
 } from "../constant/characterVariables";
-import { APIcall } from "../APIcall";
+import { APIcall } from "../components/APIcall";
 
 const Characters = ({ characterData, setCharacterData }) => {
   const [nameSuggestion, setNameSuggestion] = useState(nameSuggestions[0]);
@@ -185,25 +185,25 @@ const Characters = ({ characterData, setCharacterData }) => {
   };
 
   return (
-    <div className="text-center mb-5">
-      <h1 className="text-4xl font-bold text-center my-2">Character Section</h1>
+    <div className="mb-5 text-center">
+      <h1 className="my-2 text-center text-4xl font-bold">Character Section</h1>
 
       {characterData.map((character, index) => (
-        <form className="m-4 p-6 rounded-lg border-black border-4" key={index}>
-          <h1 className="text-2xl font-bold text-center my-2">
+        <form className="border-black m-4 rounded-lg border-4 p-6" key={index}>
+          <h1 className="my-2 text-center text-2xl font-bold">
             Character {index + 1}
           </h1>
           <div className="grid grid-cols-4">
             {selectFields.map((field) => (
               <div className="mb-5" key={field.name}>
-                <label className="block font-medium text-xl mt-5 mb-2">
+                <label className="mt-5 mb-2 block text-xl font-medium">
                   {field.name}
                 </label>
                 <select
                   name={field.name}
                   onChange={(e) => handleChange(index, e, field.value)}
                   value={characterData[field.name]}
-                  className="form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none w-4/5"
+                  className="text-gray-700 border-gray-400 w-4/5 rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white dark:border-white dark:bg-night dark:text-white"
                 >
                   {field.options.map((g) => (
                     <option key={g} value={g}>
@@ -216,7 +216,7 @@ const Characters = ({ characterData, setCharacterData }) => {
           </div>
           {inputFields.map((field) => (
             <div className="mb-5" key={field.name}>
-              <label className="block font-medium text-xl mb-2">
+              <label className="mb-2 block text-xl font-medium">
                 {field.name}
               </label>
               <div className="flex flex-row">
@@ -226,8 +226,8 @@ const Characters = ({ characterData, setCharacterData }) => {
                   onChange={(e) => handleChange(index, e, field.value, false)}
                   value={characterData[index][field.value]}
                   placeholder={field.placeholder}
-                  className={`w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
-  overflow-x-hidden text-wrap ${
+                  className={`text-gray-700 border-gray-400 text-wrap w-full overflow-x-hidden rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white dark:border-white
+  dark:bg-night dark:text-white ${
     field.name === "Description" || field.name === "Ghost" ? "h-36" : ""
   }`}
                 />
@@ -241,7 +241,7 @@ const Characters = ({ characterData, setCharacterData }) => {
             </div>
           ))}
           <button
-            className="text-red text-lg"
+            className="text-lg text-red"
             onClick={(e) => deleteCharacterField(index, e)}
           >
             Delete Character

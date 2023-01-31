@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { preview } from "./assets";
-import { getRandomPrompt } from "./utils";
-import { ImageLoader } from "./components";
+import { preview } from "../assets";
+import { getRandomPrompt } from "../utils";
+import { ImageLoader } from ".";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 
 const CreateImage = () => {
@@ -85,7 +85,7 @@ const CreateImage = () => {
       <form className="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <div className="mb-5">
-            <label className="block font-medium text-xl mb-2">
+            <label className="mb-2 block text-xl font-medium">
               Cover Photo
             </label>
             <div className="flex flex-row">
@@ -93,8 +93,8 @@ const CreateImage = () => {
                 type="text"
                 id="prompt"
                 name="prompt"
-                className="w-full form-input rounded-md py-2 px-3 leading-5 text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none align-top
-                overflow-x-hidden text-wrap"
+                className="text-gray-700 border-gray-400 focus:border-indigo-500 text-wrap w-full overflow-x-hidden rounded-md border-2 bg-white py-2 px-3 align-top leading-5 focus:bg-white focus:outline-none dark:border-white
+                dark:bg-night dark:text-white"
                 placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
                 value={form.prompt}
                 onChange={handleChange}
@@ -110,23 +110,23 @@ const CreateImage = () => {
             </div>
           </div>
 
-          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
+          <div className="bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 relative flex h-64 w-64 items-center justify-center rounded-lg border p-3 text-sm">
             {form.photo ? (
               <img
                 src={form.photo}
                 alt={form.prompt}
-                className="w-full h-full object-contain"
+                className="h-full w-full object-contain"
               />
             ) : (
               <img
                 src={preview}
                 alt="preview"
-                className="w-9/12 h-9/12 object-contain opacity-40"
+                className="h-9/12 w-9/12 object-contain opacity-40"
               />
             )}
 
             {generatingImg && (
-              <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+              <div className="absolute inset-0 z-0 flex items-center justify-center rounded-lg bg-[rgba(0,0,0,0.5)]">
                 <ImageLoader />
               </div>
             )}
@@ -137,7 +137,7 @@ const CreateImage = () => {
           <button
             type="button"
             onClick={generateImage}
-            className=" text-gray-700 dark:text-white bg-white dark:bg-night border-gray-400 dark:border-white focus:bg-white border-2 focus:border-indigo-500 focus:outline-none px-5 py-2.5 text-center"
+            className=" text-gray-700 border-gray-400 focus:border-indigo-500 border-2 bg-white px-5 py-2.5 text-center focus:bg-white focus:outline-none dark:border-white dark:bg-night dark:text-white"
           >
             {generatingImg ? "Generating..." : "Generate"}
           </button>
