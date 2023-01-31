@@ -9,7 +9,7 @@ import {
   wantSuggestions,
   flawSuggestions,
   needSuggestions,
-} from "./variables/characterVariables";
+} from "../constant/characterVariables";
 import { APIcall } from "../APIcall";
 
 const Characters = ({ characterData, setCharacterData }) => {

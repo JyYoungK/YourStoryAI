@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import { APIcall } from "../APIcall";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 const StoryGeneration = ({ StoryData, Title }) => {
   useEffect(() => {

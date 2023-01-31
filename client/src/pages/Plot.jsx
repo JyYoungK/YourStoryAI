@@ -6,8 +6,9 @@ import {
   tones,
   audiences,
   titleSuggestions,
-} from "./variables/plotVariables";
+} from "../constant/plotVariables";
 import { APIcall } from "../APIcall";
+import CreateImage from "../createImage";
 
 const Plot = ({ plotData, setPlotData }) => {
   const [titleSuggestion, setTitleSuggestion] = useState(titleSuggestions[0]);
@@ -239,6 +240,7 @@ const Plot = ({ plotData, setPlotData }) => {
           </div>
         ))}
       </form>
+      <CreateImage />
     </div>
   );
 };
