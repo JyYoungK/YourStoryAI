@@ -21,6 +21,7 @@ export const titleSuggestions = [
 
 export const artStyles = [
   "3D Illustration",
+  "Anime",
   "Abstract",
   "Charcoal Drawing",
   "Crayon Drawing",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Beatsheet from "./pages/Beatsheet";
-import Characters from "./pages/Characters";
+import Characters from "./pages/section/Characters";
 import StoryGeneration from "./pages/StoryGeneration";
 import Login from "./pages/Login";
 import DarkModeButton from "./components/DarkModeButton";
@@ -11,25 +11,35 @@ function App() {
     title: "",
     logline: "",
     audience: "",
-    artStyle: "",
+    artStyle: "Anime",
     genre: "",
-    theme: "",
+    theme: "Modern",
     plot: "",
     plotTwist: "",
   });
 
   const [characterData, setCharacterData] = useState([
     {
-      name: "Bob",
+      name: "",
       type: "Protagonist",
-      arc: "Corruption",
+      arc: "Discovery",
+      personality: "Adventurous",
+      role: "Fairy",
+      sex: "Male",
+      height: "Average",
+      face: "Oval",
+      body: "Average",
+      skin: "Beige",
+      hairStyle: "Straight",
+      hairColor: "Black",
+      hairLength: "Short",
+      eyeColor: "Brown",
+      eyeShape: "Round",
+      earShape: "Pointed",
+      noseShape: "Short",
+      want: "",
+      flaw: "",
       description: "",
-      personality: "Disciplined",
-      archetype: "Creator",
-      want: "money, fame, power",
-      need: "courage, love, friendship",
-      flaw: "will",
-      ghost: "",
     },
   ]);
 
@@ -39,7 +49,14 @@ function App() {
   let pageContent;
   switch (currentPage) {
     case 1:
-      pageContent = <Beatsheet plotData={plotData} setPlotData={setPlotData} />;
+      pageContent = (
+        <Beatsheet
+          plotData={plotData}
+          setPlotData={setPlotData}
+          characterData={characterData}
+          setCharacterData={setCharacterData}
+        />
+      );
       break;
     case 2:
       pageContent = (
@@ -90,7 +107,7 @@ function App() {
         <div className="py-6 text-center text-white">
           {currentPage === 1 && (
             <button
-              className="mx-2  rounded-md bg-purple py-2 px-4"
+              className="mx-2 rounded-md bg-purple p-5 text-2xl"
               onClick={() => {
                 handleSubmit();
                 setCurrentPage(currentPage + 1);
@@ -102,13 +119,13 @@ function App() {
           {currentPage === 2 && (
             <div>
               <button
-                className="mx-2  rounded-md bg-purple py-2 px-4"
+                className="mx-2 rounded-md bg-purple py-2 px-4"
                 onClick={() => setCurrentPage(currentPage - 1)}
               >
                 Previous Page
               </button>
               <button
-                className="mx-2  rounded-md bg-purple py-2 px-4"
+                className="mx-2 rounded-md bg-purple py-2 px-4"
                 onClick={() => {
                   setCurrentPage(currentPage + 1);
                 }}

@@ -16,5 +16,14 @@ module.exports = {
       "bubble-gum": "#ff77e9",
       bermuda: "#78dcca",
     },
+    extend: {
+      height: {
+        128: "40rem",
+      },
+      width: {
+        108: "30rem",
+        128: "40rem",
+      },
+    },
   },
 };
