@@ -1,4 +1,3 @@
-import Card from "./Card";
 import ImageLoader from "./ImageLoader";
 
-export { Card, ImageLoader };
+export { ImageLoader };

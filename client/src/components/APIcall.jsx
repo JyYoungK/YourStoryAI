@@ -1,5 +1,5 @@
 export async function APIcall(prompt) {
-  const response = await fetch("https://screenplai.onrender.com/", {
+  const response = await fetch("https://yourstoryai.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,6 +11,7 @@ export async function APIcall(prompt) {
 
   if (response) {
     const data = await response.json();
+    console.log(data);
     return data.bot;
   } else {
     alert("Error generating a new sentence");

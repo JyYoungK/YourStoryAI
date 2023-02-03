@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.status(200).send({
-    message: "Screenplai server is up and running!",
+    message: "Server is up and running!",
   });
 });
 

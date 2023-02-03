@@ -3,8 +3,6 @@ import { preview } from "../assets";
 import { ImageLoader } from ".";
 
 const CreateCharacter = ({ plotData, characterData }) => {
-  console.log(plotData);
-  console.log(characterData);
   // let prompt = `Wide field of view, an ${plotData?.artStyle} style ${characterData.sex} with a skintone of ${characterData.skin} and ${characterData.hairColor} ${characterData.hairLength} ${characterData.hairStyle} hair, and has an eye color of ${characterData.eyeColor}, professional digital art, official media`;
   let prompt = `data:image/jpeg;base64,'iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAIAAADwf7zUAAAAaG…+AgID/f/9AP//AAABAwIDw7GaQY23oNIAAAAASUVORK5CYII=' running`;
   const [form, setForm] = useState({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import {
@@ -18,11 +18,10 @@ import {
   scifiUrls,
 } from "../constant/coverPhotoVariables";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { user, logIn } = UserAuth();
+  const { user, signUp } = UserAuth();
   const navigate = useNavigate();
   const [stories, setStories] = useState([
     ...actionUrls,
@@ -45,13 +44,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
-      await logIn(email, password);
+      await signUp(email, password);
       navigate("/");
     } catch (error) {
       console.log(error);
-      setError(error.message);
     }
   };
 
@@ -65,8 +62,7 @@ const Login = () => {
       <div className="fixed left-0 h-screen w-full bg-neutral-200/20 dark:bg-black/30"></div>
       <div className="z-50 h-[400px] w-1/4 rounded-lg bg-white p-10 dark:bg-darknight">
         <div className="max-w-[650px]">
-          <h1 className="text-4xl font-bold">Sign In</h1>
-          {error ? <p className="my-2 bg-red-400 p-3">{error}</p> : null}
+          <h1 className="text-4xl font-bold  ">Sign Up</h1>
           <form onSubmit={handleSubmit} className="flex w-full flex-col py-4">
             <input
               onChange={(e) => setEmail(e.target.value)}
@@ -82,15 +78,15 @@ const Login = () => {
               placeholder="Password"
               autoComplete="current-password"
             />
-            <button className="my-6 rounded bg-sky-400 py-3 font-bold">
-              Sign In
+            <button className="my-6 rounded bg-red-600 py-3 font-bold text-white ">
+              Sign Up
             </button>
             <div className="flex items-center justify-between text-xl ">
               <p>
                 <input className="mr-2" type="checkbox" />
                 Remember me
               </p>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">Sign In</Link>
             </div>
           </form>
         </div>
@@ -99,4 +95,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

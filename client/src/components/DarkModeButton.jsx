@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { sun, moon } from "../assets";
 
 function DarkModeButton() {
   const [theme, setTheme] = useState("light");
@@ -18,15 +17,23 @@ function DarkModeButton() {
   };
 
   return (
-    <div className="cursor-pointer pl-6 hover:scale-125">
+    <div className="cursor-pointer hover:scale-125">
       {theme === "dark" ? (
-        <LightModeIcon
-          style={{ width: "48px", height: "48px" }}
+        <img
+          src={sun}
+          alt="sun"
+          style={{ width: "80px", height: "80px" }}
           onClick={handleThemeSwitch}
         />
       ) : (
-        <DarkModeIcon
-          style={{ width: "48px", height: "48px" }}
+        // <LightModeIcon
+        //   style={{ width: "48px", height: "48px" }}
+        //   onClick={handleThemeSwitch}
+        // />
+        <img
+          src={moon}
+          alt="moon"
+          style={{ width: "80px", height: "80px" }}
           onClick={handleThemeSwitch}
         />
       )}

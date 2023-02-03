@@ -9,7 +9,7 @@ import {
 } from "../../constant/plotVariables";
 import { APIcall } from "../../components/APIcall";
 
-const Main = ({ plotData, setPlotData }) => {
+const Plot = ({ plotData, setPlotData }) => {
   const [titleSuggestion, setTitleSuggestion] = useState(titleSuggestions[0]);
   const handleTitle = (event) => {
     event.preventDefault();
@@ -50,10 +50,13 @@ const Main = ({ plotData, setPlotData }) => {
       });
       prompt = `Can you write me a one short sentence that will go well with this title? ${plotData.title}`;
     }
-
-    APIcall(prompt).then((data) => {
-      setPlotData({ ...plotData, logline: data.replace(/\n/g, "") });
-    });
+    try {
+      APIcall(prompt).then((data) => {
+        setPlotData({ ...plotData, logline: data.replace(/\n/g, "") });
+      });
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const handlePlot = (event) => {
@@ -73,10 +76,13 @@ const Main = ({ plotData, setPlotData }) => {
       });
       prompt = `Can you write me a really long plot story that is for ${plotData.audience}, the genre is ${plotData.genre}, and the theme is ${plotData.theme}? Make sure it goes well with this logline. ${plotData.logline}`;
     }
-
-    APIcall(prompt).then((data) => {
-      setPlotData({ ...plotData, plot: data.replace(/\n/g, "") });
-    });
+    try {
+      APIcall(prompt).then((data) => {
+        setPlotData({ ...plotData, plot: data.replace(/\n/g, "") });
+      });
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const handlePlotTwist = (event) => {
@@ -96,10 +102,13 @@ const Main = ({ plotData, setPlotData }) => {
       });
       prompt = `Can you write me a really long plot twist story that is for ${plotData.audience}, the genre is ${plotData.genre}, and the theme is ${plotData.theme}? Make sure it goes well with this logline. ${plotData.logline}`;
     }
-
-    APIcall(prompt).then((data) => {
-      setPlotData({ ...plotData, plotTwist: data.replace(/\n/g, "") });
-    });
+    try {
+      APIcall(prompt).then((data) => {
+        setPlotData({ ...plotData, plotTwist: data.replace(/\n/g, "") });
+      });
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const mainFields = [
@@ -172,17 +181,18 @@ const Main = ({ plotData, setPlotData }) => {
   return (
     <div>
       <h1 className="my-2 mt-8 text-center text-3xl font-bold">Main Section</h1>
-      <div className="border-black m-4 rounded-lg border-2 p-6">
+      <div className="m-4 rounded-lg border-2 border-black p-6">
         {mainFields.map((field) => (
           <div className="mb-5 flex flex-col text-center" key={field.name}>
             <label className="mb-2 text-2xl font-bold">{field.name}</label>
             <div className="flex flex-row items-center justify-center text-lg">
               <input
+                required
                 type="text"
                 value={field.value}
                 onChange={(event) => field.onChange(event)}
                 placeholder={field.placeholder}
-                className={`div-input text-gray-700 border-gray-400 ml-8 w-1/3 rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white dark:border-white dark:bg-night dark:text-white `}
+                className={`div-input ml-8 w-1/3 rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white `}
               />
               <button onClick={field.onClick}>
                 <TipsAndUpdatesIcon
@@ -205,7 +215,7 @@ const Main = ({ plotData, setPlotData }) => {
               <select
                 value={field.value}
                 onChange={field.onChange}
-                className="text-gray-700 border-gray-400 w-4/5 rounded-md border-2 bg-white py-2 px-3 text-lg leading-5 focus:bg-white dark:border-white dark:bg-night dark:text-white"
+                className="w-4/5 rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-lg leading-5 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white"
               >
                 {field.options.map((g) => (
                   <option key={g} value={g}>
@@ -221,4 +231,4 @@ const Main = ({ plotData, setPlotData }) => {
   );
 };
 
-export default Main;
+export default Plot;

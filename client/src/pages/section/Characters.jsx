@@ -152,6 +152,16 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
     //     handleChange(index, event, "description", true),
     // },
   ];
+  const inputFields2 = [
+    {
+      name: "Additional Description",
+      value: "description",
+      placeholder:
+        "Anything else that will describe this character in this chapter?",
+      onClick: (index, event) =>
+        handleChange(index, event, "description", true),
+    },
+  ];
 
   const handleChange = (index, e, name, generated) => {
     e.preventDefault();
@@ -197,10 +207,14 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
         setCharacterData([...newCharacterData]);
 
         let prompt = `Can you write me an interesting story of a character who is a ${characterData[index].type} and went through ${characterData[index].arc} and their personality is ${characterData[index].personality} and is a ${characterData[index].role}`;
-        APIcall(prompt).then((data) => {
-          newCharacterData[index][name] = data.replace(/\n/g, "");
-          setCharacterData([...newCharacterData]); // Need a separate setCharacterData here to update the state when the API call is done
-        });
+        try {
+          APIcall(prompt).then((data) => {
+            newCharacterData[index][name] = data.replace(/\n/g, "");
+            setCharacterData([...newCharacterData]); // Need a separate setCharacterData here to update the state when the API call is done
+          });
+        } catch (error) {
+          alert(err);
+        }
       }
     }
     setCharacterData([...newCharacterData]);
@@ -213,7 +227,7 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
       </h1>
 
       {characterData.map((character, index) => (
-        <div className="border-black m-4 rounded-lg border-2 p-6" key={index}>
+        <div className="m-4 rounded-lg border-2 border-black p-6" key={index}>
           <h1 className="my-2 mb-8 text-center text-2xl font-bold">
             Character {index + 1}
           </h1>
@@ -235,6 +249,7 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                   </label>
                   <div className="flex flex-row items-center justify-center text-lg">
                     <input
+                      required
                       name={field.name}
                       type="text"
                       onChange={(e) =>
@@ -242,8 +257,8 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                       }
                       value={characterData[index][field.value]}
                       placeholder={field.placeholder}
-                      className={`text-gray-700 border-gray-400 text-wrap ml-8 w-1/2 overflow-x-hidden rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white dark:border-white
-      dark:bg-night dark:text-white `}
+                      className={`text-wrap dark:bg-night ml-8 w-1/2 overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white
+      dark:border-white dark:text-white `}
                     />
                     <button onClick={(event) => field.onClick(index, event)}>
                       <TipsAndUpdatesIcon
@@ -264,7 +279,7 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                       name={field.name}
                       onChange={(e) => handleChange(index, e, field.value)}
                       value={characterData[field.name]}
-                      className="text-gray-700 border-gray-400 w-5/6 rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white dark:border-white dark:bg-night dark:text-white"
+                      className="dark:bg-night w-5/6 rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white dark:border-white dark:text-white"
                     >
                       {field.options.map((g) => (
                         <option key={g} value={g}>
@@ -290,8 +305,8 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                         }
                         value={characterData[index][field.value]}
                         placeholder={field.placeholder}
-                        className={`text-gray-700 border-gray-400 text-wrap h-28 w-full overflow-x-hidden rounded-md border-2 bg-white py-2 px-3 leading-5 focus:bg-white
-      dark:border-white dark:bg-night dark:text-white`}
+                        className={`text-wrap dark:bg-night h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700
+      focus:bg-white dark:border-white dark:text-white`}
                       />
                       <button onClick={(event) => field.onClick(index, event)}>
                         <TipsAndUpdatesIcon
@@ -303,10 +318,36 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                   </div>
                 ))}
               </div>
+              {inputFields2.map((field) => (
+                <div className="mb-5" key={field.name}>
+                  <label className="mb-2 block text-xl font-medium">
+                    {field.name}
+                  </label>
+                  <div className="flex flex-row text-lg">
+                    <textarea
+                      name={field.name}
+                      type="text"
+                      onChange={(e) =>
+                        handleChange(index, e, field.value, false)
+                      }
+                      value={characterData[index][field.value]}
+                      placeholder={field.placeholder}
+                      className={`text-wrap dark:bg-night h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700
+      focus:bg-white dark:border-white dark:text-white`}
+                    />
+                    <button onClick={(event) => field.onClick(index, event)}>
+                      <TipsAndUpdatesIcon
+                        className="m-2"
+                        style={{ color: "#FFEA00", fontSize: "2rem" }}
+                      />
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           <button
-            className="mt-10 rounded-md bg-red p-3 text-lg text-white"
+            className="mt-10 rounded-md bg-red-500 p-3 text-lg text-white"
             onClick={(e) => deleteCharacterField(index, e)}
           >
             Delete Character

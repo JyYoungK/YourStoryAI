@@ -41,3 +41,41 @@ form {
     transform: rotate(360deg);
   }
 }
+
+/* .title{
+  animation-name: moveRight;
+  animation-duration: 0.7s;
+}
+
+.titleTwo {
+  animation-name: moveLeft;
+  animation-duration: 1s;
+}
+
+.titleThree{
+  animation-name: moveRight;
+  animation-duration: 1.3s;
+  margin-bottom: 10px;
+}
+
+@keyframes moveRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+} */
