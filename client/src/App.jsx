@@ -11,7 +11,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white text-center text-black dark:bg-darknight dark:text-white">
+    <div className="min-h-screen bg-white text-center text-black dark:bg-darknight dark:text-white ">
       <AuthContextProvider>
         <Navbar />
         <Routes>

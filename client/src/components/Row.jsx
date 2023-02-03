@@ -10,6 +10,8 @@ const Row = ({ rowID, title, pictures }) => {
     }
     return array;
   }
+  const shuffledPictures = shuffleArray(pictures);
+
   const slideLeft = () => {
     var slider = document.getElementById("slider" + rowID);
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -18,7 +20,6 @@ const Row = ({ rowID, title, pictures }) => {
     var slider = document.getElementById("slider" + rowID);
     slider.scrollLeft = slider.scrollLeft + 500;
   };
-  const shuffledPictures = shuffleArray(pictures);
 
   return (
     <div>
@@ -26,9 +27,16 @@ const Row = ({ rowID, title, pictures }) => {
       <div className="group relative flex items-center">
         <MdChevronLeft
           onClick={slideLeft}
-          className="absolute left-0 z-10 hidden cursor-pointer rounded-full text-sky-500 opacity-50 hover:opacity-100 group-hover:block"
+          className="absolute left-0 z-10 hidden cursor-pointer rounded-full bg-white text-sky-700 opacity-50 hover:opacity-100 group-hover:block"
+          style={{
+            width: "3.5rem",
+            height: "3.5rem",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
           size={100}
-          style={{ top: "50%" }}
         />
         <div
           id={"slider" + rowID}
@@ -40,9 +48,16 @@ const Row = ({ rowID, title, pictures }) => {
         </div>
         <MdChevronRight
           onClick={slideRight}
-          className="absolute right-0 z-10 hidden cursor-pointer rounded-full  text-sky-500 opacity-50 hover:opacity-100 group-hover:block"
+          className="absolute right-0 z-10 hidden cursor-pointer rounded-full bg-white text-sky-700 opacity-50 hover:opacity-100 group-hover:block"
+          style={{
+            width: "3.5rem",
+            height: "3.5rem",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
           size={100}
-          style={{ top: "50%" }}
         />
       </div>
     </div>

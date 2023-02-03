@@ -80,8 +80,8 @@ export const crimeUrls = [
       "https://cdn.discordapp.com/attachments/1008571121743962212/1070779737166852236/Giorgikk_futuristic_view_of_interstellar_broadway_0cde4c5a-8431-4c7e-ac8c-6bab0cf9f761.png",
   },
   {
-    title: "GR Logo",
-    logline: "A logo design for GR",
+    title: "GR",
+    logline: "GR",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571121743962212/1070779069492367461/Fej228_Gr_logo_05dfe89f-3098-4783-858a-ce354ccb29a1.png",
   },
@@ -251,7 +251,7 @@ export const mythologyUrls = [
 ];
 export const natureUrls = [
   {
-    title: "Epic Battle between a Mutant Megalodon and a Zombie T-Rex",
+    title: "Mutant Megalodon",
     logline:
       "A brutal fight between two powerful creatures in the depths of the ocean.",
     imageUrl:

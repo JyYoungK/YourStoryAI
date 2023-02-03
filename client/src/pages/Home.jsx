@@ -1,49 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
-import {
-  actionUrls,
-  adventureUrls,
-  comedyUrls,
-  crimeUrls,
-  dramaUrls,
-  fantasyUrls,
-  historicalUrls,
-  horrorUrls,
-  knowledgeUrls,
-  mysteryUrls,
-  mythologyUrls,
-  natureUrls,
-  romanceUrls,
-  scifiUrls,
-} from "../constant/coverPhotoVariables";
+import { stories } from "../components/generateImages";
 import Row from "../components/Row";
 
 const Home = () => {
-  const [stories, setStories] = useState([]);
-  useEffect(() => {
-    setStories([
-      ...actionUrls,
-      ...adventureUrls,
-      ...comedyUrls,
-      ...crimeUrls,
-      ...dramaUrls,
-      ...fantasyUrls,
-      ...historicalUrls,
-      ...horrorUrls,
-      ...knowledgeUrls,
-      ...mysteryUrls,
-      ...mythologyUrls,
-      ...natureUrls,
-      ...romanceUrls,
-      ...scifiUrls,
-    ]);
-  }, []);
-
   return (
-    <div>
+    <div className="overflow-y-auto scrollbar-hide">
       <Main stories={stories} />
-      <Row rowId="1" title="Recent Releases" pictures={stories} />
-      <Row rowId="2" title="Popular" pictures={stories} />
+      <Row rowID="1" title="Recent Releases" pictures={stories} />
+      <Row rowID="2" title="Popular" pictures={stories} />
       {/* <Row rowId="3" title="Action" pictures={actionUrls} />
       <Row rowId="4" title="Adventure" pictures={adventureUrls} />
       <Row rowId="5" title="Comedy" pictures={comedyUrls} />

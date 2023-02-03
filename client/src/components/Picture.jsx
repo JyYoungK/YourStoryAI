@@ -28,10 +28,10 @@ const Picture = ({ item }) => {
   };
 
   return (
-    <div className="relative inline-block w-[160px] cursor-pointer p-2 sm:w-[200px] md:w-[240px] lg:w-[280px]">
+    <div className="relative inline-block cursor-pointer p-2 sm:w-[200px] md:w-[340px] lg:w-[400px]">
       <img className="block w-full" src={item.imageUrl} alt={item?.title} />
       <div className="absolute top-0 left-0 h-full w-full text-white opacity-0 hover:bg-black/80 hover:opacity-100">
-        <p className=" flex h-full items-center justify-center text-center text-xs font-bold md:text-sm">
+        <p className="flex h-full items-center justify-center text-center text-xs font-bold md:text-lg">
           {item?.title}
         </p>
         {/* <p className=" flex h-full items-center justify-center text-center text-xs font-bold md:text-sm">

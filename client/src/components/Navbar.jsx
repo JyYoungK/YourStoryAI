@@ -21,7 +21,7 @@ const Navbar = () => {
     <div className="absolute z-[100] flex w-full items-center justify-between p-4">
       <DarkModeButton />
       <Link to="/">
-        <div className="ml-[10%] cursor-pointer text-7xl font-black text-amber-500">
+        <div className="ml-[15%] cursor-pointer text-7xl font-black text-amber-500">
           YourStoryAI
         </div>
       </Link>
@@ -38,15 +38,17 @@ const Navbar = () => {
           </button>
         </div>
       ) : (
-        <div>
+        <div className="text-2xl font-bold">
           <Link to="/login">
-            <button className="pr-4 text-white">Sign In</button>
-          </Link>
-          <Link to="/signup">
-            <button className="cursor-pointer rounded bg-red-600 px-6 py-2 text-white">
-              Sign Up
+            <button className="cursor-pointer rounded-xl bg-red-600 px-6 py-2 text-white">
+              Sign In
             </button>
           </Link>
+          {/* <Link to="/signup">
+            <button className="cursor-pointer rounded-xl bg-red-600 px-6 py-2 text-white">
+              Sign Up
+            </button>
+          </Link> */}
         </div>
       )}
     </div>

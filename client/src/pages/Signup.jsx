@@ -1,46 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import {
-  actionUrls,
-  adventureUrls,
-  comedyUrls,
-  crimeUrls,
-  dramaUrls,
-  fantasyUrls,
-  historicalUrls,
-  horrorUrls,
-  knowledgeUrls,
-  mysteryUrls,
-  mythologyUrls,
-  natureUrls,
-  romanceUrls,
-  scifiUrls,
-} from "../constant/coverPhotoVariables";
+import { story } from "../components/generateImages";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, signUp } = UserAuth();
   const navigate = useNavigate();
-  const [stories, setStories] = useState([
-    ...actionUrls,
-    ...adventureUrls,
-    ...comedyUrls,
-    ...crimeUrls,
-    ...dramaUrls,
-    ...fantasyUrls,
-    ...historicalUrls,
-    ...horrorUrls,
-    ...knowledgeUrls,
-    ...mysteryUrls,
-    ...mythologyUrls,
-    ...natureUrls,
-    ...romanceUrls,
-    ...scifiUrls,
-  ]);
-
-  const story = stories[Math.floor(Math.random() * stories.length)];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +23,7 @@ const Signup = () => {
     <div className="flex h-screen w-full items-center justify-center">
       <img
         className="absolute hidden h-full w-full object-cover sm:block"
+        key={story.imageUrl}
         src={story.imageUrl}
         alt="/"
       />
