@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TypeWriter from "typewriter-effect";
 
-const Main = ({ stories }) => {
-  const story = stories[Math.floor(Math.random() * stories.length)];
-
+const Main = ({ story }) => {
   return (
     <div className="h-screen w-full">
       <div className="h-full w-full">
@@ -35,9 +33,11 @@ const Main = ({ stories }) => {
                 Create
               </button>
             </Link>
-            <button className="ml-4 border border-gray-300 py-2 px-5 text-white">
-              Read
-            </button>
+            <Link to="/readStory">
+              <button className="ml-4 border border-gray-300 py-2 px-5 text-white">
+                Read
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -56,7 +56,7 @@ const SavedShows = () => {
             >
               <img
                 className="block h-auto w-full"
-                src={`https://image.tmdb.org/t/p/w500/${item?.img}`}
+                src={item?.imageUrl}
                 alt={item?.title}
               />
               <div className="absolute top-0 left-0 h-full w-full text-white opacity-0 hover:bg-black/80 hover:opacity-100">

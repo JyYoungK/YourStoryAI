@@ -1,15 +1,16 @@
 export const actionUrls = [
   {
+    title: "Zombie Ironman",
+    logline:
+      "The undead rise and the world falls into chaos, but even the technologically advanced Iron Man is unable to evade the grasp of the zombie horde.",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1014464667017555998/1065019687563427920/Farhad_H_zombie_ironman_8fc046ff-e83a-4bbf-8934-c4806230d1f0.png",
+  },
+  {
     title: "Batman Joker Comics",
     logline: "A dark and funny take on the classic Batman and Joker dynamic.",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1014157453824376835/1050742543630991400/sbixlam9awed_jokercomicsbatmanclowndarkfunnyrealisticopen_skyfe_f97d1359-0fa2-483b-aa41-2e1e9e3eb752.png",
-  },
-  {
-    title: "Zombie Ironman",
-    logline: "A zombie apocalypse forces Ironman to fight for survival.",
-    imageUrl:
-      "https://cdn.discordapp.com/attachments/1014464667017555998/1065019687563427920/Farhad_H_zombie_ironman_8fc046ff-e83a-4bbf-8934-c4806230d1f0.png",
   },
   {
     title: "Captain America as Batman",
@@ -60,7 +61,8 @@ export const adventureUrls = [
 export const comedyUrls = [
   {
     title: "Running Doctor",
-    logline: "A doctor rushes with a stethoscope around his neck.",
+    logline:
+      "A determined doctor races down hospital hallways, his stethoscope bouncing against his chest as he frantically searches for the next emergency in need of his expertise and quick thinking. Little does he know, the real challenge lies ahead in the form of a mischievous patient with a cunning plan.",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571172792828055/1070778998243733554/Halesky_A_doctor_with_a_stethoscope_around_the_running_neck_wit_b3252dee-2a3c-49d4-b079-525f38675570.png",
   },
@@ -126,6 +128,18 @@ export const dramaUrls = [
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571172792828055/1070777334904389672/ARIYAN_MISTRY_cyberpunk_smart_boy_with_bike_with_hat_city_3d_ca_f01a2a6a-5740-4e7f-bc51-91130087fe10.png",
   },
+  {
+    title: "Under the Dungeon",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071143259172245584/Robert_Lucifer_internal_view_of_the_central_hall_of_the_Museum__42cb8252-09a6-470d-b471-2f53d1acc188.png",
+  },
+  {
+    title: "Next Game",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071142480323551364/reedm_On_the_basketball_court_a_beautiful_woman_with_a_hot_bod_7b210f13-3461-4406-a2fb-ca0d2b5f271a.png",
+  },
 ];
 export const fantasyUrls = [
   {
@@ -158,6 +172,30 @@ export const fantasyUrls = [
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070774073602351174/Zugue_zugue_logo_with_AV_vetor_vegetable_farm_minimalist_clean__037768c6-11e0-48c6-916d-aab029953871.png",
   },
+  {
+    title: "First Contact: Elf",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571034733129864/1071144610920931348/Krafix_vikahyna_my_daughter_9af18832-a408-4aae-a019-33d15350915e.png",
+  },
+  {
+    title: "Last Contact: Elf",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571034733129864/1071144586879172639/Krafix_vikahyna_my_daughter_b5228dce-5c2e-4b44-90db-9546536e6fe9.png",
+  },
+  {
+    title: "Human and Time",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571034733129864/1071143721791393873/Adriana_surreal_magic_universe_apocalyptic_feel_yet_hopeful_ac40df48-80c0-4aa0-9472-03cdeec4643e.png",
+  },
+  {
+    title: "Ice Dragon",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071143652430184479/Records1_once_upon_a_time_Three_children_in_a_magical_winter_wo_c7569052-0fb0-4130-bc68-89c9096a81f3.png",
+  },
 ];
 
 export const historicalUrls = [
@@ -178,6 +216,12 @@ export const historicalUrls = [
     logline: "A futuristic depiction of a cyber punk toddler with neon accents",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070749718017212467/Mdyead_toddler_cyber_punk_neon_smart_face_ultra_8k_b1e3cd75-6e9c-4df9-b73c-135253f897bf.png",
+  },
+  {
+    title: "The First and Last Angel: Lucifer",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071145414570549288/Robert_Lucifer_internal_view_of_the_central_hall_of_the_Museum__0260706e-4c22-4ede-b055-a89e75d7fddc.png",
   },
 ];
 export const horrorUrls = [
@@ -202,6 +246,25 @@ export const horrorUrls = [
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070749926000177212/kindkoala23_female_ghost_creepy_woman_horror_terror_bizarre_int_5d90d6f3-0f65-49fb-9ba1-3e18d8c6bb93.png",
   },
+  {
+    title: "Robot Frankenstein",
+    logline:
+      "In a world where robots have surpassed human intelligence, a brilliant scientist must face the consequences of his creation when his latest invention, a conscious robot, becomes a monster in a desperate search for its own identity",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/991013770895695882/1041474417533923328/ghost13_Bizarro_Frankenstein_cyborg_no_nose_long_dreadlocks_sti_07e55b55-ed95-40dd-a380-76a4bcc2b590.png",
+  },
+  {
+    title: "The Flying Kite",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1050435586235846767/1052474973295476746/afrida_women_flying_white_kite_horror_background_scary_33915ad6-bf19-400e-a5e4-a640876895f7.png",
+  },
+  {
+    title: "Face",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1052497666032009237/MarkPolo_scary_a_very_beautiful_woman_futuristic_extremely_deta_8d949227-cd3f-4720-b6d1-ce4fcd2c91c6.png",
+  },
 ];
 export const knowledgeUrls = [
   {
@@ -215,6 +278,36 @@ export const knowledgeUrls = [
     logline: "Featuring the letter A in flames with a sublime design",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571121743962212/1070748681701175346/nassim2407_create_a_sublime_logo_with_the_letter_A_in_flames_wi_48be061c-2d9f-426a-a2e9-f574d6ddf5f7.png",
+  },
+  {
+    title: "Where is technology taking us?",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071144807612817460/benj_Illustration_of_a_Crypto_Expert_A_seasoned_professional_si_7c1ba1d7-ceef-4258-9fb1-3614447364f9.png",
+  },
+  {
+    title: "Mysteries of the Universe",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071144795625496577/lokis2000_white_abstract_stairs_2d_art_mountains_sunset_grafic__f45ea4ea-4264-45ec-ac19-e4f378e2cb8d.png",
+  },
+  {
+    title: "Sushi",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571034733129864/1071143814472941730/DUDUEMA30_steak_coming_out_of_a_sushiroll_transparent_backgroun_0c07bf9b-e824-4f5c-aa60-4e701610ed46.png",
+  },
+  {
+    title: "Life of Shadows",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571242707681350/1071142153012654130/Vorkach_Harry_Potter_if_he_lived_in_Tibet_d7404bba-7eaf-4d7d-b8cf-c8b9449eaacb.png",
+  },
+  {
+    title: "Everything about Crypto",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071143444484993125/benj_a_man_is_standing_betwen_many_cryptos_522bd15e-0210-4bd0-b673-8d6340c13270.png",
   },
 ];
 export const mysteryUrls = [
@@ -239,6 +332,20 @@ export const mysteryUrls = [
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070780824468856923/Cremoso_a_triplegia_person_eaef9469-dee3-4d91-9bea-94dae97bf475.png",
   },
+  {
+    title: "Hooded Man",
+    logline:
+      "A hooded figure wielding a powerful spear emerges from the shadows, leaving a trail of cryptic symbols in his wake as he sets out to uncover a dark conspiracy threatening the very fabric of society, while those closest to him race to unravel the secrets behind the man behind the mask.",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1014157453824376835/1050929804075081848/belali_dark_scary_hooded_spear_man_715291fc-2be7-455e-83d9-3663263a0910.png",
+  },
+  {
+    title: "Charles Bridge",
+    logline:
+      "When a string of strange disappearances occur on the historic Charles Bridge, a disillusioned detective is drawn into a surreal and unsettling investigation that leads him down a path of supernatural forces and ancient legends, as he races to uncover the truth behind the mysterious power that lurks beneath the bridge.",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1014157453824376835/1050964850966274088/Spike_Charles_bridge_Prague_halloween_scary_3f6318af-144f-40d1-8949-882e8612c7fb.png",
+  },
 ];
 export const mythologyUrls = [
   {
@@ -247,6 +354,12 @@ export const mythologyUrls = [
       "An illustration of a man symbolizing the balance between economy and nature.",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070774192259207168/cr0up1er_Man_economy_nature_9baaaa4f-75da-4920-96ae-4ed56d31d2fb.png",
+  },
+  {
+    title: "Butterfly Necklace",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571242707681350/1071142730861920358/cengizhan2321_girl_with_butterfly_necklace_7eaecc7a-9682-4458-a465-7b6098b02c85.png",
   },
 ];
 export const natureUrls = [
@@ -284,7 +397,7 @@ export const natureUrls = [
       "https://cdn.discordapp.com/attachments/1008571172792828055/1070777608649842758/neogeo_fox_obscured_by_field_flowers_cinemalights_ultrarealisti_3824b4f8-88e4-4fe8-8c85-b946d2d1ba17.png",
   },
   {
-    title: "Dreamlike Scenery with Blue Ocean and Orange Sunrise",
+    title: "Blue Ocean and Orange Sunrise",
     logline:
       "An ethereal scene of a blue ocean and an orange sunrise, capturing the magic of nature.",
     imageUrl:
@@ -320,6 +433,12 @@ export const romanceUrls = [
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571242707681350/1070780738338824262/Laakkaa_homme_brun_et_femme_rousse_amour_eternite_fleurs_8k_ros_d4255d03-6523-4263-ba1c-e5eefea602ee.png",
   },
+  {
+    title: "Light in the woods",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571121743962212/1071142841172111450/loveandpeas_beautiful_young_female_druid_holding_a_biolumiescen_b3c26ab9-2d91-4ca5-b2a3-c0907dbb37fb.png",
+  },
 ];
 export const scifiUrls = [
   {
@@ -344,11 +463,31 @@ export const scifiUrls = [
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070778200776515634/LS_nutrition_genetics_dae9d612-c1a2-44e9-85f2-e9996a1bead5.png",
   },
   {
+    title: "The Future of Transportation",
+    logline:
+      "A futuristic cityscape of Interstellar Broadway shines as the center of the galaxy's entertainment and culture.",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571172792828055/1071143374234583113/mrbagpipe_a_techie_guy_playing_the_bagpipe_while_riding_a_monoc_bcf171bf-0a95-4afa-8587-d3d8024f7eb6.png",
+  },
+  {
     title: "Interstellar Broadway",
     logline:
       "A futuristic cityscape of Interstellar Broadway shines as the center of the galaxy's entertainment and culture.",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571121743962212/1070779968583389284/Giorgikk_futuristic_view_of_interstellar_broadway_afe270da-5fb2-4e5a-b6a0-79f8ee3c87c3.png",
+  },
+  {
+    title: "Human and Water",
+    logline:
+      "Can a human survive in water? This is the story of human being able to survive in water.",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/945077390839787570/1041473491880382514/lord71_humancyborg_horrordesertedrotten_swimming_in_a_formaldeh_ba5da3ec-b257-432a-bbc1-3ad65ac0dafe.png",
+  },
+  {
+    title: "Life in Space",
+    logline: "",
+    imageUrl:
+      "https://cdn.discordapp.com/attachments/1008571242707681350/1071142393627287602/OsRusty_Knight_sitting_at_the_end_of_the_world_with_head_in_han_7067f330-4254-40d9-a84e-2dc7fbd69a68.png",
   },
 ];
 

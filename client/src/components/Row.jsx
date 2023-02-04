@@ -2,7 +2,8 @@ import React from "react";
 import Picture from "./Picture";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const Row = ({ rowID, title, pictures }) => {
+const Row = ({ rowID, title, pictures, liked }) => {
+  let shuffledPictures;
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -10,7 +11,9 @@ const Row = ({ rowID, title, pictures }) => {
     }
     return array;
   }
-  const shuffledPictures = shuffleArray(pictures);
+  if (pictures) {
+    shuffledPictures = shuffleArray(pictures);
+  }
 
   const slideLeft = () => {
     var slider = document.getElementById("slider" + rowID);
@@ -42,8 +45,8 @@ const Row = ({ rowID, title, pictures }) => {
           id={"slider" + rowID}
           className="relative h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
         >
-          {shuffledPictures.map((item, id) => (
-            <Picture key={id} item={item} />
+          {shuffledPictures?.map((item, id) => (
+            <Picture key={id} item={item} liked={liked} />
           ))}
         </div>
         <MdChevronRight
