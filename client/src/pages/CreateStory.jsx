@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import StorySetUp from "./StorySetUp";
 import BeatSheet from "./BeatSheet";
+import Review from "./Review";
+import { Link } from "react-router-dom";
 import { APIcall } from "../components/APIcall";
 import { dummyStoryDataVariables } from "../constant/storyDataVariables";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const CreateStory = () => {
+  const { user } = UserAuth();
+  const userID = doc(db, "users", `${user?.email}`);
+
   const [plotData, setPlotData] = useState({
     title: "",
     logline: "",
@@ -40,6 +48,7 @@ const CreateStory = () => {
   const [storyData, setStoryData] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [generatingStory, setGeneratingStory] = useState(false);
+  const [selectedImages, setSelectedImages] = useState({});
 
   let pageContent;
   switch (currentPage) {
@@ -54,7 +63,19 @@ const CreateStory = () => {
       );
       break;
     case 2:
-      pageContent = <BeatSheet StoryData={storyData} Title={plotData.title} />;
+      pageContent = (
+        <BeatSheet
+          StoryData={storyData}
+          Title={plotData.title}
+          selectedImages={selectedImages}
+          setSelectedImages={setSelectedImages}
+        />
+      );
+      break;
+    case 3:
+      pageContent = (
+        <Review Title={plotData.title} selectedImages={selectedImages} />
+      );
       break;
     default:
       pageContent = (
@@ -91,6 +112,8 @@ const CreateStory = () => {
         }
       }
       setStoryData(dummyStoryDataVariables);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       setCurrentPage(2);
 
       // try {
@@ -114,6 +137,21 @@ const CreateStory = () => {
     } else {
       alert("You need to enter Title, Logline and Character Name");
     }
+  };
+
+  const publishStory = async () => {
+    alert("Created a story called " + plotData.title);
+
+    await updateDoc(userID, {
+      createdShows: arrayUnion({
+        title: plotData.title,
+        logline: plotData.logline,
+        audience: plotData.audience,
+        genre: plotData.genre,
+        story: selectedImages,
+        imageUrl: selectedImages["Opening Image"].image,
+      }),
+    });
   };
 
   return (
@@ -145,8 +183,28 @@ const CreateStory = () => {
                 setCurrentPage(currentPage + 1);
               }}
             >
-              Publish !
+              Review
             </button>
+          </div>
+        )}
+        {currentPage === 3 && (
+          <div>
+            <button
+              className="mx-2 rounded-md bg-purple py-2 px-4 text-2xl"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              Previous Page
+            </button>
+            <Link to="/">
+              <button
+                className="mx-2 rounded-md bg-purple py-2 px-4 text-2xl"
+                onClick={() => {
+                  publishStory();
+                }}
+              >
+                Publish
+              </button>
+            </Link>
           </div>
         )}
       </div>

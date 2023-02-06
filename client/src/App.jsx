@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateStory from "./pages/CreateStory";
 import ReadStory from "./pages/ReadStory";
-import Account from "./pages/Account";
+import DetailStory from "./pages/DetailStory";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -21,14 +21,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/createStory" element={<CreateStory />} />
           <Route path="/readStory" element={<ReadStory />} />
-          <Route
-            path="/account"
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/stories/:title" element={<DetailStory />} />
         </Routes>
       </AuthContextProvider>
     </div>

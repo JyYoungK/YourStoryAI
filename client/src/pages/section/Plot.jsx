@@ -52,6 +52,7 @@ const Plot = ({ plotData, setPlotData }) => {
     }
     try {
       APIcall(prompt).then((data) => {
+        console.log(data);
         setPlotData({ ...plotData, logline: data.replace(/\n/g, "") });
       });
     } catch (err) {

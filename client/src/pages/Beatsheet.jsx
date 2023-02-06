@@ -23,7 +23,7 @@ import {
 
 import checkIcon from "../assets/checkicon.png";
 
-const BeatSheet = ({ StoryData, Title }) => {
+const BeatSheet = ({ StoryData, Title, selectedImages, setSelectedImages }) => {
   useEffect(() => {
     if (StoryData) {
       setSentences(StoryData.replace(/\n/g, "").split("Act "));
@@ -48,16 +48,19 @@ const BeatSheet = ({ StoryData, Title }) => {
     FinaleImage,
   ];
   const [sentences, setSentences] = useState(null);
-  const [selectedImages, setSelectedImages] = useState({});
 
   const handleImageClick = (image, type) => {
-    setSelectedImages({ ...selectedImages, [type]: image });
+    setSelectedImages({
+      ...selectedImages,
+      [type]: { ...selectedImages[type], image: image },
+    });
   };
 
-  const handleSentenceChange = (index, event) => {
-    const newSentences = [...sentences];
-    newSentences[index] = event.target.value;
-    setSentences(newSentences);
+  const handleSentenceChange = (event, type) => {
+    setSelectedImages({
+      ...selectedImages,
+      [type]: { ...selectedImages[type], text: event.target.value },
+    });
   };
 
   const handleCopy = (sentence) => {
@@ -78,7 +81,9 @@ const BeatSheet = ({ StoryData, Title }) => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="my-2 mb-10 text-center text-5xl font-bold">{Title}</h1>
+      <h1 className="my-2 mb-10 text-center text-5xl font-bold">
+        Beat Sheet: {Title}
+      </h1>
       {sentences ? (
         sentences.map((sentence, index) => {
           if (sentence.includes(":")) {
@@ -97,7 +102,17 @@ const BeatSheet = ({ StoryData, Title }) => {
                   displayImage = generatedImages[index + 10];
                 }
 
+                //Saves default images/text to selectedImages state
                 if (subSentence.includes(":")) {
+                  if (!selectedImages[subSentence.split(":")[0]]) {
+                    setSelectedImages({
+                      ...selectedImages,
+                      [subSentence.split(":")[0]]: {
+                        image: displayImage[0],
+                        text: subSentence.split(":")[1],
+                      },
+                    });
+                  }
                   return (
                     <div className="mb-20 text-left" key={subSentence}>
                       <h2 className="my-4 text-3xl">
@@ -105,10 +120,16 @@ const BeatSheet = ({ StoryData, Title }) => {
                       </h2>
                       <div className="mb-10 flex flex-row justify-between">
                         <textarea
-                          className={`text-gray-700 border-gray-400 h-24 w-full overflow-x-hidden rounded-md border-2 bg-white py-2 px-2 align-top text-2xl
+                          className={`h-24 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-2 align-top text-2xl text-gray-700
               dark:border-white dark:bg-night dark:text-white`}
-                          value={subSentence.split(":")[1] + "."}
-                          onChange={(e) => handleSentenceChange(index, e)}
+                          onChange={(e) =>
+                            handleSentenceChange(e, subSentence.split(":")[0])
+                          }
+                          value={
+                            selectedImages[subSentence.split(":")[0]]?.text
+                              ? selectedImages[subSentence.split(":")[0]].text
+                              : subSentence.split(":")[1] + "."
+                          }
                         />
                         <button
                           className="mx-2"
@@ -129,7 +150,7 @@ const BeatSheet = ({ StoryData, Title }) => {
                         {displayImage?.map((image) => {
                           return (
                             <div
-                              className="border-gray-400 relative transform border-8 p-3 duration-500 hover:scale-105 dark:border-white"
+                              className="relative transform border-8 border-gray-400 p-3 duration-500 hover:scale-105 dark:border-white"
                               key={image}
                               onClick={() =>
                                 handleImageClick(
@@ -143,9 +164,9 @@ const BeatSheet = ({ StoryData, Title }) => {
                                 src={image}
                                 alt="display image"
                               />
-                              {selectedImages[subSentence.split(":")[0]] ===
-                                image && (
-                                <div className="bg-green-400 absolute bottom-0 right-0 p-2 text-white">
+                              {selectedImages[subSentence.split(":")[0]]
+                                ?.image === image && (
+                                <div className="absolute bottom-0 right-0 p-2 text-white">
                                   <img
                                     className="h-1/4 w-1/4"
                                     src={checkIcon}
@@ -158,12 +179,12 @@ const BeatSheet = ({ StoryData, Title }) => {
                         })}
                       </div>
                       <div className="flex justify-center">
-                        <button
+                        {/* <button
                           className="mx-2 mb-6 rounded-md bg-orange py-2 px-3 text-2xl"
                           title="Regenerate"
                         >
                           Regenerate
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   );
@@ -172,8 +193,11 @@ const BeatSheet = ({ StoryData, Title }) => {
                 }
               });
             return (
-              <div className="border-black mt-10 border-2 p-5" key={index}>
-                <h2 className="mb-7 text-4xl font-bold">{act}</h2>
+              <div
+                className="mt-10 border-2 border-black p-5 dark:border-white"
+                key={index}
+              >
+                <h2 className="mb-7 text-4xl font-bold underline">{act}</h2>
                 {subSentences}
               </div>
             );

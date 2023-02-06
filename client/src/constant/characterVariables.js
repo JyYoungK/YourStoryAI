@@ -1,3 +1,8 @@
+export const dummyCharacterPhotos = [
+  "https://cdn.discordapp.com/attachments/1070498563597021247/1072010338133872740/Mavis_kirito_with_red_afro_hair_a091a63f-cded-45ae-bca3-1f5543a729b2.png",
+  "https://cdn.discordapp.com/attachments/995431544019755070/1058549223173398548/Viktor.666_2d_anime_style_portrait_of_the_Kirito_colorful_9e9f3a87-fe50-4ed9-861a-529697599724.png",
+];
+
 export const nameSuggestions = [
   "",
   "Aria Shadowborn",
@@ -173,6 +178,7 @@ export const roles = [
   "Cynic",
   "Defender",
   "Destroyer",
+  "Detective",
   "Devil",
   "Diplomat",
   "Disguised Hero",

@@ -81,7 +81,7 @@ const ReadStory = () => {
                   src={item.imageUrl}
                   alt={item.title}
                 />
-                <h2 className="text-lg font-bold">{item.title}</h2>
+                <h2 className="text-lg font-bold text-black">{item.title}</h2>
               </div>
             ))}
           </div>

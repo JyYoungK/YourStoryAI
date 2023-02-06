@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TypeWriter from "typewriter-effect";
+import { UserAuth } from "../context/AuthContext";
 
 const Main = ({ story }) => {
+  const { user } = UserAuth();
+  const navigate = useNavigate();
+
+  const createStory = async () => {
+    if (!user?.email) {
+      alert("Please log in to create");
+      return;
+    } else {
+      navigate("/createStory");
+    }
+  };
   return (
     <div className="h-screen w-full">
       <div className="h-full w-full">
@@ -28,11 +40,14 @@ const Main = ({ story }) => {
             />
           </div>
           <div className="mt-20 text-2xl">
-            <Link to="/createStory">
-              <button className="border border-gray-300 bg-gray-300 py-2 px-5 text-black">
-                Create
-              </button>
-            </Link>
+            <button
+              className="border border-gray-300 bg-gray-300 py-2 px-5 text-black"
+              onClick={() => {
+                createStory();
+              }}
+            >
+              Create
+            </button>
             <Link to="/readStory">
               <button className="ml-4 border border-gray-300 py-2 px-5 text-white">
                 Read

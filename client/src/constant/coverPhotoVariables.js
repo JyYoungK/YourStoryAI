@@ -27,7 +27,7 @@ export const actionUrls = [
 ];
 export const adventureUrls = [
   {
-    title: "Giant Monster with Sword and Shield",
+    title: "Giant Monster",
     logline: "A monster with a giant sword and shield threatens the land.",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571172792828055/1070868253523587093/kemooo_a_giant_monster_with_a_giant_sword_and_a_huge_shield_fig_46176072-82cf-4772-b9d7-1abef4746868.png",
@@ -268,13 +268,13 @@ export const horrorUrls = [
 ];
 export const knowledgeUrls = [
   {
-    title: "Crosshair Karambit",
+    title: "Origin of Pirate",
     logline: "Featuring a crosshair with a karambit in the center",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1070750433057968208/scottmc_Crosshair_with_a_karambit_in_the_middle_logo_a2cce29b-3637-45d7-a89b-7a4d03dfd9bc.png",
   },
   {
-    title: "Flamed Letter A Sublime",
+    title: "How Alphabet Works",
     logline: "Featuring the letter A in flames with a sublime design",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571121743962212/1070748681701175346/nassim2407_create_a_sublime_logo_with_the_letter_A_in_flames_wi_48be061c-2d9f-426a-a2e9-f574d6ddf5f7.png",
@@ -292,7 +292,7 @@ export const knowledgeUrls = [
       "https://cdn.discordapp.com/attachments/1008571172792828055/1071144795625496577/lokis2000_white_abstract_stairs_2d_art_mountains_sunset_grafic__f45ea4ea-4264-45ec-ac19-e4f378e2cb8d.png",
   },
   {
-    title: "Sushi",
+    title: "History of Sushi",
     logline: "",
     imageUrl:
       "https://cdn.discordapp.com/attachments/1008571034733129864/1071143814472941730/DUDUEMA30_steak_coming_out_of_a_sushiroll_transparent_backgroun_0c07bf9b-e824-4f5c-aa60-4e701610ed46.png",
