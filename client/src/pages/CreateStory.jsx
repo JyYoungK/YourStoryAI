@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StorySetUp from "./StorySetUp";
 // import BeatSheet from "./BeatSheet";
 import Review from "./Review";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { APIcall } from "../components/APIcall";
 import { dummyStoryDataVariables } from "../constant/storyDataVariables";
 import { UserAuth } from "../context/AuthContext";
@@ -12,6 +12,7 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 const CreateStory = () => {
   const { user } = UserAuth();
   const userID = doc(db, "users", `${user?.email}`);
+  const navigate = useNavigate();
 
   const [plotData, setPlotData] = useState({
     title: "",
@@ -49,6 +50,7 @@ const CreateStory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [generatingStory, setGeneratingStory] = useState(false);
   const [selectedImages, setSelectedImages] = useState({});
+  const [apiCallFail, setApiCallFail] = useState(false);
 
   let pageContent;
   switch (currentPage) {
@@ -111,29 +113,27 @@ const CreateStory = () => {
           prompt += ` but the character flaw is ${characterData[i].flaw}`;
         }
       }
-      setStoryData(dummyStoryDataVariables);
-      await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      setCurrentPage(2);
-
-      // try {
-      //   APIcall(prompt).then((data) => {
-      //     if (data) {
-      //       console.log("Story has been generated");
-      //       setGeneratingStory(false);
-      //       setStoryData(data);
-      //       setCurrentPage(2);
-      //     } else {
-      //       alert("API call failed, generating a story using example data");
-      //       setStoryData(dummyStoryDataVariables);
-      //       setCurrentPage(2);
-      //     }
-      //   });
-      // } catch (err) {
-      //   alert("API call failed, generating a story using example data");
-      //   setStoryData(dummyStoryDataVariables);
-      //   setCurrentPage(2);
-      // }
+      try {
+        APIcall(prompt).then((data) => {
+          if (data) {
+            console.log("Story has been generated");
+            setGeneratingStory(false);
+            setStoryData(data);
+            setCurrentPage(2);
+          } else {
+            alert("API call failed, could not generate a story");
+            navigate("/");
+            // setStoryData(dummyStoryDataVariables);
+            // setCurrentPage(2);
+          }
+        });
+      } catch (err) {
+        alert("API call failed, could not generate a story");
+        navigate("/");
+        // setStoryData(dummyStoryDataVariables);
+        // setCurrentPage(2);
+      }
     } else {
       alert("You need to enter Title, Logline and Character Name");
     }
@@ -177,14 +177,16 @@ const CreateStory = () => {
             >
               Previous Page
             </button>
-            <button
-              className="mx-2 rounded-md bg-purple py-2 px-4 text-2xl"
-              onClick={() => {
-                setCurrentPage(currentPage + 1);
-              }}
-            >
-              Review
-            </button>
+            {!apiCallFail && (
+              <button
+                className="mx-2 rounded-md bg-purple py-2 px-4 text-2xl"
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Review
+              </button>
+            )}
           </div>
         )}
         {currentPage === 3 && (

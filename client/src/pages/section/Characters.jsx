@@ -22,6 +22,7 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
   const [nameSuggestion, setNameSuggestion] = useState(nameSuggestions[0]);
   const [wantSuggestion, setWantSuggestion] = useState(wantSuggestions[0]);
   const [flawSuggestion, setFlawSuggestion] = useState(flawSuggestions[0]);
+  const [isBald, setIsBald] = useState(false);
 
   const addCharacterField = (event) => {
     event.preventDefault();
@@ -143,14 +144,6 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
         "What false beliefs are an obstacle to this character in this chapter?",
       onClick: (index, event) => handleChange(index, event, "flaw", true),
     },
-    // {
-    //   name: "Additional Description",
-    //   value: "description",
-    //   placeholder:
-    //     "Anything else that will describe this character in this chapter?",
-    //   onClick: (index, event) =>
-    //     handleChange(index, event, "description", true),
-    // },
   ];
   const inputFields2 = [
     {
@@ -168,6 +161,13 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
 
     let newCharacterData = [...characterData];
     newCharacterData[index][name] = e.target.value;
+
+    if (name === "hairStyle" && e.target.value === "Bald") {
+      setIsBald(true);
+    } else {
+      setIsBald(false);
+    }
+
     if (generated) {
       if (name === "name") {
         const nextSuggestionIndex = nameSuggestions.indexOf(nameSuggestion) + 1;
@@ -257,8 +257,8 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                       }
                       value={characterData[index][field.value]}
                       placeholder={field.placeholder}
-                      className={`text-wrap dark:bg-night ml-8 w-1/2 overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white
-      dark:border-white dark:text-white `}
+                      className={`text-wrap ml-8 w-1/2 overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-gray-700 focus:bg-white dark:border-white
+      dark:bg-night dark:text-white `}
                     />
                     <button onClick={(event) => field.onClick(index, event)}>
                       <TipsAndUpdatesIcon
@@ -279,7 +279,12 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                       name={field.name}
                       onChange={(e) => handleChange(index, e, field.value)}
                       value={characterData[field.name]}
-                      className="dark:bg-night w-5/6 rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white dark:border-white dark:text-white"
+                      className="w-5/6 rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white"
+                      disabled={
+                        (field.value === "hairColor" ||
+                          field.value === "hairLength") &&
+                        isBald
+                      }
                     >
                       {field.options.map((g) => (
                         <option key={g} value={g}>
@@ -305,8 +310,8 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                         }
                         value={characterData[index][field.value]}
                         placeholder={field.placeholder}
-                        className={`text-wrap dark:bg-night h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700
-      focus:bg-white dark:border-white dark:text-white`}
+                        className={`text-wrap h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-gray-700 focus:bg-white
+      dark:border-white dark:bg-night dark:text-white`}
                       />
                       <button onClick={(event) => field.onClick(index, event)}>
                         <TipsAndUpdatesIcon
@@ -332,8 +337,8 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
                       }
                       value={characterData[index][field.value]}
                       placeholder={field.placeholder}
-                      className={`text-wrap dark:bg-night h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700
-      focus:bg-white dark:border-white dark:text-white`}
+                      className={`text-wrap h-28 w-full overflow-x-hidden rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white
+      dark:border-white dark:bg-night dark:text-white`}
                     />
                     <button onClick={(event) => field.onClick(index, event)}>
                       <TipsAndUpdatesIcon

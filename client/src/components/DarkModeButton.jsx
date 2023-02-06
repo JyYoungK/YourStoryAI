@@ -17,7 +17,7 @@ function DarkModeButton() {
   };
 
   return (
-    <div className="cursor-pointer hover:scale-125">
+    <div className="hidden cursor-pointer hover:scale-125 md:block">
       {theme === "dark" ? (
         <img
           src={sun}
@@ -26,10 +26,6 @@ function DarkModeButton() {
           onClick={handleThemeSwitch}
         />
       ) : (
-        // <LightModeIcon
-        //   style={{ width: "48px", height: "48px" }}
-        //   onClick={handleThemeSwitch}
-        // />
         <img
           src={moon}
           alt="moon"

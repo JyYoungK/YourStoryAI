@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-white text-center text-black dark:bg-darknight dark:text-white ">
       <AuthContextProvider>
-        <Navbar />
+        <Navbar className="hidden md:block" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

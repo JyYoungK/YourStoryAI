@@ -161,24 +161,25 @@ const Plot = ({ plotData, setPlotData }) => {
     },
   ];
 
-  const inputFields = [
-    {
-      name: "Plot",
-      value: plotData.plot,
-      onChange: (event) =>
-        setPlotData({ ...plotData, plot: event.target.value }),
-      placeholder: "What is the plot of your story?",
-      onClick: handlePlot,
-    },
-    {
-      name: "Plot Twist",
-      value: plotData.plotTwist,
-      onChange: (event) =>
-        setPlotData({ ...plotData, plotTwist: event.target.value }),
-      placeholder: "What is the plot twist of your story?",
-      onClick: handlePlotTwist,
-    },
-  ];
+  // const inputFields = [
+  //   {
+  //     name: "Plot",
+  //     value: plotData.plot,
+  //     onChange: (event) =>
+  //       setPlotData({ ...plotData, plot: event.target.value }),
+  //     placeholder: "What is the plot of your story?",
+  //     onClick: handlePlot,
+  //   },
+  //   {
+  //     name: "Plot Twist",
+  //     value: plotData.plotTwist,
+  //     onChange: (event) =>
+  //       setPlotData({ ...plotData, plotTwist: event.target.value }),
+  //     placeholder: "What is the plot twist of your story?",
+  //     onClick: handlePlotTwist,
+  //   },
+  // ];
+
   return (
     <div>
       <h1 className="my-2 mt-8 text-center text-3xl font-bold">Main Section</h1>
@@ -193,7 +194,7 @@ const Plot = ({ plotData, setPlotData }) => {
                 value={field.value}
                 onChange={(event) => field.onChange(event)}
                 placeholder={field.placeholder}
-                className={`div-input ml-8 w-1/3 rounded-md border-2 border-gray-400 bg-white py-2 px-3 leading-5 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white `}
+                className={` ml-8 w-1/3 rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white `}
               />
               <button onClick={field.onClick}>
                 <TipsAndUpdatesIcon
@@ -216,7 +217,7 @@ const Plot = ({ plotData, setPlotData }) => {
               <select
                 value={field.value}
                 onChange={field.onChange}
-                className="w-4/5 rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-lg leading-5 text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white"
+                className="w-4/5 rounded-md border-2 border-gray-400 bg-white py-2 px-3 text-lg text-gray-700 focus:bg-white dark:border-white dark:bg-night dark:text-white"
               >
                 {field.options.map((g) => (
                   <option key={g} value={g}>

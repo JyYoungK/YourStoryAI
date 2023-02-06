@@ -19,39 +19,30 @@ const CreateCharacter = ({ plotData, characterData }) => {
   const generateImage = async () => {
     if (form.prompt) {
       setGeneratingImg(true);
-      if (counter == 2) {
-        setCounter(0);
+
+      try {
+        setGeneratingImg(true);
+        const response = await fetch(
+          "https://dalle-qx3u.onrender.com/api/v1/dalle",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: form.prompt,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        console.log(data);
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (err) {
+        alert(err);
+      } finally {
+        setGeneratingImg(false);
       }
-      console.log(counter);
-      // Wait for 3 seconds
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      setForm({ ...form, photo: dummyCharacterPhotos[counter] });
-      setCounter(counter + 1);
-      setGeneratingImg(false);
-
-      // try {
-      //   setGeneratingImg(true);
-      //   const response = await fetch(
-      //     "https://dalle-qx3u.onrender.com/api/v1/dalle",
-      //     {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify({
-      //         prompt: form.prompt,
-      //       }),
-      //     }
-      //   );
-
-      //   const data = await response.json();
-      //   console.log(data);
-      //   setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
-      // } catch (err) {
-      //   alert(err);
-      // } finally {
-      //   setGeneratingImg(false);
-      // }
     } else {
       alert("Please provide proper prompt");
     }

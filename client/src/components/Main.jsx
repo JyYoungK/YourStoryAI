@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TypeWriter from "typewriter-effect";
 import { UserAuth } from "../context/AuthContext";
