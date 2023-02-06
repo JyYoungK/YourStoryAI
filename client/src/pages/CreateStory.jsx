@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StorySetUp from "./StorySetUp";
-import BeatSheet from "./BeatSheet";
+// import BeatSheet from "./BeatSheet";
 import Review from "./Review";
 import { Link } from "react-router-dom";
 import { APIcall } from "../components/APIcall";
@@ -63,14 +63,14 @@ const CreateStory = () => {
       );
       break;
     case 2:
-      pageContent = (
-        <BeatSheet
-          StoryData={storyData}
-          Title={plotData.title}
-          selectedImages={selectedImages}
-          setSelectedImages={setSelectedImages}
-        />
-      );
+      // pageContent = (
+      //   <BeatSheet
+      //     StoryData={storyData}
+      //     Title={plotData.title}
+      //     selectedImages={selectedImages}
+      //     setSelectedImages={setSelectedImages}
+      //   />
+      // );
       break;
     case 3:
       pageContent = (

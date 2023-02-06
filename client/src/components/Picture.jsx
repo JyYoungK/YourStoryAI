@@ -65,12 +65,11 @@ const Picture = ({ item, liked }) => {
             className="absolute top-0 left-0 h-full w-full text-white opacity-0 hover:bg-black/80 hover:opacity-100"
             onClick={(event) => {
               console.log(event);
-              if (event.target.tagName === "svg" || like) {
-                // Prevent modal from opening when heart is clicked
+              if (event.target.tagName === "DIV") {
+                setIsModalOpen(true);
+                setSelectedStory(item);
                 return;
               }
-              setIsModalOpen(true);
-              setSelectedStory(item);
             }}
           >
             <p onClick={saveShow}>
