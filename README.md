@@ -1,6 +1,6 @@
 # YourStoryAI Project
 
-- Demo Video URL: https://yourstoryiai.vercel.app/
+- Demo Site URL: https://yourstoryiai.vercel.app/
 - Demo Video URL: https://www.youtube.com/watch?v=19AVIVCYeKQ
 
 - Created using ChatGPT-3 and DALL-E-2 APIS
