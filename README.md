@@ -17,10 +17,14 @@ If you like the idea, feel free to message me collaborate and contribute!
 - ChatGPT/DALL-E-2
 
 
+
 ## Getting Started
 
 
 This project has many areas that can be improved, such as UI/UX, story generation, image consistency, and image diversity. I have used up all the free usage from my OpenAI API key, and I'm willing to pay for a subscription to increase usage or taking suggestions for another apprroach such as creating our own API.
+
+Please DM me on Discord for contribution: JYK#1446
+
 
 ### Installation
 
