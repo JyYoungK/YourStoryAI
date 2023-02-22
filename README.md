@@ -1,11 +1,8 @@
 # YourStoryAI Project
+---
 
 - Demo Site URL: https://yourstoryiai.vercel.app/
 - Demo Video URL: https://www.youtube.com/watch?v=19AVIVCYeKQ
-
-- Created using ChatGPT-3 and DALL-E-2 APIS
-
-- Designed for Desktop only.
 
 ### Frontend
 
@@ -17,13 +14,20 @@
 - Express/Socket
 - ChatGPT/DALL-E-2
 
+
+# Getting Started
+---
+
+This project has many areas to be improved such as UI/UX, story generation, image consistency and image diversity.
+I have used up all the free amount of usage from OpenAI apikey, willing to get paid one to increase the usage if I can get some help on contributing or open for other options if anyone has a better approach such as making their own api.
+
 ### Installation
 
 You can install the latest version using npm:
 cd to client and server folder then
 `npm install`
 
-### Generate Working Website on your localhost
+### Create Your Own Demo Working Website on your localhost
 
 - Create `.env` file inside server
 - Fill in the followings
