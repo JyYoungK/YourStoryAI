@@ -1,5 +1,7 @@
 # YourStoryAI Project
 
+Let's create a world where anyone can create their story.
+If you like the idea, feel free to message me collaborate and contribute! 
 
 - Demo Site URL: https://yourstoryiai.vercel.app/
 - Demo Video URL: https://www.youtube.com/watch?v=19AVIVCYeKQ
@@ -16,10 +18,9 @@
 
 
 # Getting Started
----
 
-This project has many areas to be improved such as UI/UX, story generation, image consistency and image diversity.
-I have used up all the free amount of usage from OpenAI apikey, willing to get paid one to increase the usage if I can get some help on contributing or open for other options if anyone has a better approach such as making their own api.
+
+This project has many areas that can be improved, such as UI/UX, story generation, image consistency, and image diversity. I have used up all the free usage from my OpenAI API key, and I'm willing to pay for a subscription to increase usage or taking suggestions for another apprroach such as creating our own API.
 
 ### Installation
 
