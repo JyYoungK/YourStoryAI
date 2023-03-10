@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <img
-        className="absolute hidden h-full w-full object-cover sm:block"
+        className="absolute h-full w-full object-cover sm:block"
         key={story.imageUrl}
         src={story.imageUrl}
         alt="/"
