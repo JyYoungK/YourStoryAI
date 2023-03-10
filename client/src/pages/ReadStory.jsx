@@ -104,7 +104,7 @@ const ReadStory = () => {
                 {selectedStory.title}
               </h1>
               <div className="relative h-3/4 ">
-                <div className="mt-4 flex flex-row justify-evenly text-center font-bold md:text-2xl ">
+                <div className="mt-4 flex flex-row justify-evenly text-center text-sm font-bold md:text-2xl ">
                   <div className="flex flex-row">
                     <div className="text-green-500"> New&nbsp;&nbsp;</div>
                     <div> 2023 </div>
