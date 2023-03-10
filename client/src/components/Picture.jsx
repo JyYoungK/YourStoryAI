@@ -22,6 +22,7 @@ const Picture = ({ item, liked }) => {
 
   const saveShow = async () => {
     if (user?.email) {
+      console.log(user);
       if (liked) {
         // If photo is already liked, remove it from savedShows
         try {
@@ -62,9 +63,8 @@ const Picture = ({ item, liked }) => {
             alt={item?.title}
           />
           <div
-            className="absolute top-0 left-0 h-full w-full text-white opacity-0 hover:bg-black/80 hover:opacity-100"
+            className="z-5 absolute top-0 left-0 h-full w-full text-white opacity-0 hover:bg-black/80 hover:opacity-100"
             onClick={(event) => {
-              console.log(event);
               if (event.target.tagName === "DIV") {
                 setIsModalOpen(true);
                 setSelectedStory(item);
@@ -74,9 +74,9 @@ const Picture = ({ item, liked }) => {
           >
             <p onClick={saveShow}>
               {like ? (
-                <FaHeart className="absolute bottom-4 right-4 h-12 w-12 text-gray-300" />
+                <FaHeart className="absolute bottom-4 right-4 z-10 h-12 w-12 text-gray-300" />
               ) : (
-                <FaRegHeart className="absolute bottom-4 right-4 h-12 w-12 text-gray-300" />
+                <FaRegHeart className="absolute bottom-4 right-4 z-10 h-12 w-12 text-gray-300" />
               )}
             </p>
           </div>
@@ -106,18 +106,18 @@ const Picture = ({ item, liked }) => {
                   <div> {selectedStory.genre}</div>
                   <div>16 Chapters</div>
                 </div>
-                <div className="text-md mx-auto mt-0 flex flex-wrap whitespace-normal pt-10 font-bold md:justify-center md:text-2xl">
+                <div className="text-md mx-auto mt-0 flex flex-wrap whitespace-normal px-2 pt-10 font-bold md:justify-center md:text-xl">
                   {selectedStory.logline}
                 </div>
-                <Link
+                {/* <Link
                   to={{
                     pathname: `/stories/${selectedStory.title}`,
                   }}
-                >
-                  <button className="absolute bottom-0 left-0 right-0 mx-auto w-32 rounded-2xl bg-orange p-2 text-center text-2xl">
-                    Read
-                  </button>
-                </Link>
+                > */}
+                <button className="absolute bottom-0 left-0 right-0 mx-auto w-32 rounded-2xl bg-orange p-2 text-center text-2xl">
+                  Read
+                </button>
+                {/* </Link> */}
               </div>
             </div>
           </div>
