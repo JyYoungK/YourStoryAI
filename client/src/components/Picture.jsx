@@ -97,7 +97,7 @@ const Picture = ({ item, liked }) => {
           <div className="h-1/2 w-2/3">
             <div className="h-3/4 w-full bg-slate-100 dark:bg-darknight">
               <div className="relative h-3/4">
-                <div className="mt-4 flex flex-row justify-evenly border-b-4 border-black pt-4 text-center text-2xl font-bold dark:border-white">
+                <div className="text-md mt-4 flex flex-row justify-evenly border-b-4 border-black pt-4 text-center font-bold dark:border-white md:text-2xl">
                   <div className="flex flex-row">
                     <div className="text-green-500">New&nbsp;&nbsp;</div>
                     <div>2023</div>
@@ -106,7 +106,7 @@ const Picture = ({ item, liked }) => {
                   <div> {selectedStory.genre}</div>
                   <div>16 Chapters</div>
                 </div>
-                <div className="mx-auto mt-0 flex justify-center pt-10 text-2xl font-bold">
+                <div className="text-md mx-auto mt-0 flex flex-wrap whitespace-normal pt-10 font-bold md:justify-center md:text-2xl">
                   {selectedStory.logline}
                 </div>
                 <Link

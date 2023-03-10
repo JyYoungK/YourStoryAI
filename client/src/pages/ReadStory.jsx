@@ -45,15 +45,16 @@ const ReadStory = () => {
   };
   const story = selectedGenre[Math.floor(Math.random() * selectedGenre.length)];
   return (
-    <div className="h-screen w-full">
-      <div className="h-full w-full">
-        <div className="absolute h-screen w-full bg-black/20 dark:bg-black/40"></div>
+    <div>
+      <div className="relative h-screen">
+        <div className="absolute z-10 h-full w-full bg-black/20 dark:bg-black/40"></div>
+
         <img
-          className="h-full w-full object-cover"
+          className="fixed inset-0 z-0 h-full w-full object-cover"
           src={story?.pictureUrl[0].imageUrl}
           alt={story?.pictureUrl[0].title}
         />
-        <div className="absolute right-2 top-[15%] flex w-full justify-end">
+        <div className="absolute right-2 top-[15%] z-10 flex w-full justify-end">
           <select
             className="mt-5 ml-5 rounded-lg border-2 border-black p-3 text-lg text-black outline-none dark:bg-gray-500 dark:text-white sm:mt-0"
             onChange={handleGenreSelect}
@@ -66,10 +67,10 @@ const ReadStory = () => {
           </select>
         </div>
         <div className="flex justify-center">
-          <div className="absolute top-[25%] grid w-3/4 grid-cols-5">
+          <div className="absolute top-[25%] z-20 grid md:grid-cols-5">
             {selectedGenre[0].pictureUrl.map((item) => (
               <div
-                className="rounded-lg bg-gray-200 p-8 text-center shadow-lg"
+                className="my-2 mx-2 rounded-lg bg-gray-200 p-8 text-center shadow-lg"
                 key={item.imageUrl}
                 onClick={() => {
                   setIsModalOpen(true);
@@ -83,46 +84,46 @@ const ReadStory = () => {
                 />
                 <h2 className="text-lg font-bold text-black">{item.title}</h2>
               </div>
-            ))}
+            ))}{" "}
           </div>
         </div>
-        {isModalOpen && (
-          <div
-            className="absolute top-[20%] flex h-1/2 w-full justify-center p-4 text-black dark:text-white md:p-8"
-            onClick={() => setIsModalOpen(false)}
-          >
-            <div className="grid w-4/5 grid-cols-2 ">
-              <img
-                className="h-3/4 w-full border-[10px] border-black dark:border-white"
-                src={selectedStory.imageUrl}
-                alt={selectedStory.title}
-              />
-              <div className="h-3/4 w-full bg-slate-100 dark:bg-darknight">
-                <h1 className="h-1/4 py-10 font-mono text-2xl font-bold underline dark:border-white md:text-5xl">
-                  {selectedStory.title}
-                </h1>
-                <div className="relative h-3/4 border-4 border-black">
-                  <div className="mt-4 flex flex-row justify-evenly text-center text-2xl font-bold ">
-                    <div className="flex flex-row">
-                      <div className="text-green-500"> New&nbsp;&nbsp;</div>
-                      <div> 2023 </div>
-                    </div>
-                    <div> Teen </div>
-                    <div> {selectedGenre[0].name}</div>
-                    <div> 16 Chapters </div>
+      </div>
+      {isModalOpen && (
+        <div
+          className="absolute top-[20%] z-30 flex h-1/2 w-full justify-center p-4 text-black dark:text-white md:p-8"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div className="grid w-4/5 md:grid-cols-2 ">
+            <img
+              className="w-full border-[10px] border-black dark:border-white md:h-3/4"
+              src={selectedStory.imageUrl}
+              alt={selectedStory.title}
+            />
+            <div className="w-full bg-slate-100 dark:bg-darknight md:h-3/4">
+              <h1 className="h-1/4 py-10 font-mono text-xl font-bold underline dark:border-white md:text-4xl">
+                {selectedStory.title}
+              </h1>
+              <div className="relative h-3/4 ">
+                <div className="mt-4 flex flex-row justify-evenly text-center font-bold md:text-2xl ">
+                  <div className="flex flex-row">
+                    <div className="text-green-500"> New&nbsp;&nbsp;</div>
+                    <div> 2023 </div>
                   </div>
-                  <div className="my-6 flex p-4 text-2xl font-bold">
-                    {selectedStory.logline}
-                  </div>
-                  <div className="absolute bottom-2 left-0 right-0 mx-auto w-32 rounded-2xl bg-orange p-2 text-center text-4xl">
-                    Read
-                  </div>
+                  <div> Teen </div>
+                  <div> {selectedGenre[0].name}</div>
+                  <div> 16 Chapters </div>
+                </div>
+                <div className="my-6 flex p-4 font-bold md:text-2xl">
+                  {selectedStory.logline}
+                </div>
+                <div className="absolute bottom-7 left-0 right-0 mx-auto w-32 rounded-2xl bg-orange p-2 text-center md:text-2xl">
+                  Read
                 </div>
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

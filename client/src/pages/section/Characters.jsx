@@ -231,7 +231,7 @@ const Characters = ({ plotData, characterData, setCharacterData }) => {
           <h1 className="my-2 mb-8 text-center text-2xl font-bold">
             Character {index + 1}
           </h1>
-          <div className="grid grid-cols-2">
+          <div className="grid md:grid-cols-2">
             <div className="flex items-center justify-center text-center">
               <CreateCharacter
                 plotData={plotData}
