@@ -17,11 +17,13 @@ const Row = ({ rowID, title, pictures, liked }) => {
 
   const slideLeft = () => {
     var slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft - 500;
+    const slideWidth = slider.clientWidth; // get the width of the slider container
+    slider.scrollLeft = slider.scrollLeft - slideWidth;
   };
   const slideRight = () => {
     var slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft = slider.scrollLeft + 500;
+    const slideWidth = slider.clientWidth; // get the width of the slider container
+    slider.scrollLeft = slider.scrollLeft + slideWidth;
   };
 
   return (

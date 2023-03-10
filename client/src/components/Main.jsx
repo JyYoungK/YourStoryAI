@@ -28,7 +28,7 @@ const Main = ({ story }) => {
           <h1 className="text-2xl font-bold md:text-5xl">
             Make your own amazing story with a help of AI tool!
           </h1>
-          <div className="mt-6 flex flex-row items-center justify-center text-center text-4xl font-bold">
+          <div className="mt-6 flex flex-col items-center justify-center text-center text-4xl font-bold md:flex-row">
             Create your own&nbsp;
             <TypeWriter
               options={{
